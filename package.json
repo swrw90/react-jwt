@@ -1,0 +1,30 @@
+{
+  "name": "react-jwt",
+  "version": "1.0.0",
+  "description": "\"Server-side authentication using JWT with express\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swrw90/react-jwt.git"
+  },
+  "keywords": [
+    "JWT",
+    "Express",
+    "NodeJS",
+    "MongoDB",
+    "React",
+    "Redux"
+  ],
+  "author": "Seth Watson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swrw90/react-jwt/issues"
+  },
+  "homepage": "https://github.com/swrw90/react-jwt#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
