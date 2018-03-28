@@ -1,13 +1,17 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-
 //all requests filter through morgan and a log is returned in the console
-const morgan = require('morgan');
 app.use(morgan('dev'));
 
+//extracts json data and makes it easily readable
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //only requests starting with /*example* are handled by 2nd argument. 
 //requests starting with /*example* are forwarded to the route file defined by 2nd argument.
@@ -25,7 +29,7 @@ app.use((req, res, next) => {
 
 //returns error for failed requests or errors coming from anywhere
 app.use((error, req, res, next) => {
-    error.status(error.status || 500);
+    res.status(error.status || 500);
     res.json({
         error: {
             message: error.message
