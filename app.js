@@ -13,6 +13,19 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//header1 gives access to server for any client via *
+//header2 defines which headers are allowed
+//checks if http method used on request is one of the OPTIONS allowed for request, browser sends this first
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    if (req.method === 'OPTIONS') {
+        req.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+        return res.status(200).json({});
+    }
+});
+
 //only requests starting with /*example* are handled by 2nd argument. 
 //requests starting with /*example* are forwarded to the route file defined by 2nd argument.
 app.use('/products', productRoutes)
