@@ -2,9 +2,15 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+
+mongoose.connect('localhost:27017', {
+    useMongoClient: true
+})
+
 
 //all requests filter through morgan and a log is returned in the console
 app.use(morgan('dev'));
@@ -24,6 +30,7 @@ app.use((req, res, next) => {
         req.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
         return res.status(200).json({});
     }
+    next();
 });
 
 //only requests starting with /*example* are handled by 2nd argument. 
