@@ -31,15 +31,14 @@ router.post('/', (req, res, next) => {
 //handles specific product via productId variable, assigns it to new const id via params
 router.get('/:productId', (req, res, next) => {
     const id = req.params.productId;
-    if (id === 'special') {
-        res.status(200).json({
-            message: 'Special product id received'
-        });
-    } else {
-        res.status(200).json({
-            message: 'You passed an ID'
-        });
-    }
+    Product.findById(id)
+        .exec()
+        .then(doc => {
+            console.log("From the database", doc);
+            res.status(200).json(doc);
+        })
+        .catch(err => console.log(err));
+    res.status(500).json({ error: err });
 });
 
 //handles updating a specific product via id
