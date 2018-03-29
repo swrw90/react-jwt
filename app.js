@@ -6,8 +6,9 @@ const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const uri = 'mongodb://localhost:27017/react-jwt';
 
-mongoose.connect('mongodb://localhost:27017/react-jwt');
+mongoose.connect(uri);
 
 //all requests filter through morgan and a log is returned in the console
 app.use(morgan('dev'));
