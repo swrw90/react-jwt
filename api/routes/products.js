@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const Product = require('../models/product');
 
+
 //handles GET requests to /products 
 router.get('/', (req, res, next) => {
     res.status(200).json({
