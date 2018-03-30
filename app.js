@@ -10,6 +10,8 @@ const uri = 'mongodb://localhost:27017/react-jwt';
 
 mongoose.connect(uri);
 
+mongoose.Promise = global.Promise;
+
 //all requests filter through morgan and a log is returned in the console
 app.use(morgan('dev'));
 
