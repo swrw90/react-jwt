@@ -18,9 +18,9 @@ router.post('/', (req, res, next) => {
         _id: mongoose.Types.ObjectId(),
         quantity: req.body.quantity,
         product: req.body.productId
-    })
+    });
+    order
         .save()
-        .exec()
         .then(result => {
             console.log(result);
             res.status(201).json(result);
