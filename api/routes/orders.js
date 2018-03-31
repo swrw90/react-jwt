@@ -76,19 +76,44 @@ router.post('/', (req, res, next) => {
 
 //handles GET requests for a specific order via orderId
 router.get('/:orderId', (req, res, next) => {
-    rest.status(200).json({
-        message: 'Order details',
-        orderId: req.params.orderId
-    });
+    Order.findById(req.params.orderId)
+        .exec()
+        .then(order => {
+            res.status(200).json({
+                order: order,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:5000/orders'
+                }
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 
 //handles DELETE requests for a specific order via orderId
 router.delete('/:orderId', (req, res, next) => {
-    rest.status(200).json({
-        message: 'Order deleted',
-        orderId: req.params.orderId
-    });
+    Order.remove({ _id: req.params.orderId })
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Order deleted',
+                request: {
+                    type: 'POST',
+                    url: 'http://localhost:5000/orders',
+                    body: { product: 'ID', quantity: 'Number' }
+                }
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        })
 });
 
 
