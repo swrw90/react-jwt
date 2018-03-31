@@ -36,14 +36,20 @@ router.get('/', (req, res, next) => {
 
 //handles POST requests to /orders, returns created order
 router.post('/', (req, res, next) => {
-
-    const order = new Order({
-        _id: mongoose.Types.ObjectId(),
-        quantity: req.body.quantity,
-        product: req.body.productId
-    });
-    order
-        .save()
+    Product.findById(req.body.productId)
+        .then(product => {
+            if (!product) {
+                return res.status(404).json({
+                    message: 'Product not found'
+                });
+            }
+            const order = new Order({
+                _id: mongoose.Types.ObjectId(),
+                quantity: req.body.quantity,
+                product: req.body.productId
+            });
+            return order.save();
+        })
         .then(result => {
             console.log(result);
             res.status(201).json({
@@ -56,14 +62,15 @@ router.post('/', (req, res, next) => {
                     type: 'GET',
                     url: 'http://localhost:5000/orders/' + result._id
                 }
-            });
+            })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        message: 'Product not found',
+                        error: err
+                    });
+                });
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            });
-        });
 });
 
 
