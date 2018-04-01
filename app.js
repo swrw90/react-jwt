@@ -15,6 +15,9 @@ mongoose.Promise = global.Promise;
 //all requests filter through morgan and a log is returned in the console
 app.use(morgan('dev'));
 
+//static makes folder public
+app.use('/uploads', express.static('uploads'));
+
 //extracts json data and makes it easily readable
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
