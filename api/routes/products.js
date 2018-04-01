@@ -4,7 +4,17 @@ const mongoose = require('mongoose');
 
 //multer parses bodies of form data. dest specifies a folder where multer will store incoming files
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' })
+
+//configures the way multer will store the file
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+})
+const upload = multer({ storage: storage })
 
 const Product = require('../models/product');
 
