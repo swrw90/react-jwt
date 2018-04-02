@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
@@ -14,9 +15,9 @@ router.post('/signup', (req, res, next) => {
                     message: 'Mail exists'
                 });
             } else {
-                bcrypt.hash(req.body.password, 10, () => {
+                bcrypt.hash(req.body.password, 10, (err) => {
                     if (err) {
-                        return res.status(500).jsong({
+                        return res.status(500).json({
                             error: err
                         });
                     } else {
@@ -63,8 +64,19 @@ router.post('/login', (req, res, next) => {
                     });
                 }
                 if (result) {
+                    const token = jwt.sign(
+                        {
+                            email: user[0].email,
+                            userId: user[0]._id
+                        },
+                        process.env.JWT_KEY,
+                        {
+                            expiresIn: '1h'
+                        }
+                    );
                     return res.status(200).json({
-                        message: 'Authorization successful'
+                        message: 'Authorization successful',
+                        token: token
                     });
                 }
                 return res.status(401).json({
