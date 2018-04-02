@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 router.post('/signup', (req, res, next) => {
-    bcrypt.hash(req.body.email, 10, () => {
+    bcrypt.hash(req.body.password, 10, () => {
         if (err) {
             return res.status(500).jsong({
                 error: err

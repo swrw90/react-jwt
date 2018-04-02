@@ -39,8 +39,10 @@ app.use((req, res, next) => {
 
 //only requests starting with /*example* are handled by 2nd argument. 
 //requests starting with /*example* are forwarded to the route file defined by 2nd argument.
-app.use('/products', productRoutes)
-app.use('/orders', orderRoutes)
+app.use('/products', productRoutes);
+app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
+
 
 
 //returns error for requests not found by other routes and forwards the error
