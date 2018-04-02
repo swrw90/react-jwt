@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 const uri = 'mongodb://localhost:27017/react-jwt';
 
 mongoose.connect(uri);

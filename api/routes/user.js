@@ -6,16 +6,33 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 router.post('/signup', (req, res, next) => {
-    const user = new User({
-        _id: new mongoose.Types.ObjectId(),
-        email: req.body.email,
-        password: bcrypt.hash(req.body.email, 10, () => {
-            if (err) {
-                return res.status(500).jsong({
-                    error: err
+    bcrypt.hash(req.body.email, 10, () => {
+        if (err) {
+            return res.status(500).jsong({
+                error: err
+            })
+        } else {
+            const user = new User({
+                _id: new mongoose.Types.ObjectId(),
+                email: req.body.email,
+                password: hash
+            });
+            user
+                .save()
+                .then(result => {
+                    console.log(result)
+                    res.status(201).json({
+                        message: 'User created'
+                    });
                 })
-            }
-        })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    })
+                })
+        }
+
     });
 });
 
