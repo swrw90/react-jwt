@@ -24,7 +24,7 @@ router.post('/signup', (req, res, next) => {
                         const user = new User({
                             _id: new mongoose.Types.ObjectId(),
                             email: req.body.email,
-                            password: hash
+                            password: bcrypt.hash
                         });
                         user
                             .save()
@@ -73,7 +73,7 @@ router.post('/login', (req, res, next) => {
                         {
                             expiresIn: '1h'
                         }
-                    );
+                    ); console.log(token);
                     return res.status(200).json({
                         message: 'Authorization successful',
                         token: token

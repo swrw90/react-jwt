@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../auth/check-auth');
 
 //multer parses bodies of form data. dest specifies a folder where multer will store incoming files
 const multer = require('multer');
@@ -74,7 +75,7 @@ router.get('/', (req, res, next) => {
 });
 
 //handles POST requests to /products, returns created product
-router.post('/', upload.single('productImage'), (req, res, next) => {
+router.post('/', checkAuth, upload.single('productImage'), (req, res, next) => {
     console.log(req.file);
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),

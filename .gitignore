@@ -4,7 +4,7 @@
 /node_modules
 
 #env
-/nodemon.json
+.env
 
 # testing
 /coverage
