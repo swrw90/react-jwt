@@ -2,6 +2,7 @@ const Product = require('../models/product');
 const mongoose = require('mongoose');
 
 
+//Gets all products
 exports.products_get_all = (req, res, next) => {
     Product.find()
         .select('name price _id productImage')
@@ -38,6 +39,8 @@ exports.products_get_all = (req, res, next) => {
         });
 }
 
+
+//Create a product
 exports.products_create_product = checkAuth, (req, res, next) => {
     console.log(req.file);
     const product = new Product({
@@ -69,6 +72,8 @@ exports.products_create_product = checkAuth, (req, res, next) => {
         });
 }
 
+
+//Get a specific product
 exports.products_get_product = (req, res, next) => {
     const id = req.params.productId;
     Product.findById(id)
@@ -94,6 +99,8 @@ exports.products_get_product = (req, res, next) => {
     res.status(500).json({ error: err });
 }
 
+
+//Update a product
 exports.products_update_product = checkAuth, (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
@@ -120,6 +127,8 @@ exports.products_update_product = checkAuth, (req, res, next) => {
         });
 }
 
+
+//Deletes a product
 exports.products_delete_product = checkAuth, (req, res, next) => {
     const id = req.params.productId;
     Product.remove({ _id: id })
