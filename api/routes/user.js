@@ -1,20 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
-const User = require('../models/user');
 const UserController = require('../controllers/user');
-
+const checkAuth = require('../auth/check-auth');
 
 //Creates a new user
 router.post('/signup', UserController.user_signup);
 
-
+//Authenticate and login a user
 router.post('/login', UserController.user_login);
 
-
-router.delete('/:userId', UserController.user_delete);
+//Deletes a user
+router.delete('/:userId', checkAuth, UserController.user_delete);
 
 module.exports = router;

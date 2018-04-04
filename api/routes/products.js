@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const checkAuth = require('../auth/check-auth');
 const ProductsController = require('../controllers/products');
 
@@ -35,8 +34,6 @@ const upload = multer({
     },
     fileFilter: fileFilter
 });
-
-const Product = require('../models/product');
 
 
 //handles GET requests to /products 
