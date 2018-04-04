@@ -49,31 +49,7 @@ router.post('/', checkAuth, upload.single('productImage'), ProductsController.pr
 router.get('/:productId', ProductsController.products_get_product);
 
 //handles updating a specific product via id
-router.patch('/:productId', checkAuth, (req, res, next) => {
-    const id = req.params.productId;
-    const updateOps = {};
-    for (const ops of req.body) {
-        updateOps[ops.propName] = ops.value;
-    }
-    Product.update({ _id: id }, { $set: updateOps })
-        .exec()
-        .then(result => {
-            console.log(result);
-            res.status(200).json({
-                message: 'Product updated',
-                request: {
-                    type: 'GET',
-                    url: 'http://localhost:5000/products/' + id
-                }
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            });
-        });
-});
+router.patch('/:productId', cheackAuth, ProductsController.products_update_product);
 
 //handles deleting a specific product via id
 router.delete('/:productId', checkAuth, (req, res, next) => {
