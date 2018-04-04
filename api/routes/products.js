@@ -43,33 +43,10 @@ const Product = require('../models/product');
 router.get('/', ProductsController.products_get_all);
 
 //handles POST requests to /products, returns created product
-router.post('/', checkAuth, ProductsController.products_create_product);
+router.post('/', checkAuth, upload.single('productImage'), ProductsController.products_create_product);
 
 //handles specific product via productId variable, assigns it to new const id via params
-router.get('/:productId', (req, res, next) => {
-    const id = req.params.productId;
-    Product.findById(id)
-        .select('name price _id productImage')
-        .exec()
-        .then(doc => {
-            console.log("From the database", doc);
-            if (doc) {
-                res.status(200).json({
-                    product: doc,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:5000/products/'
-                    }
-                });
-            } else {
-                res.status(404).json({
-                    message: 'No valid entry found for provided ID'
-                })
-            }
-        })
-        .catch(err => console.log(err));
-    res.status(500).json({ error: err });
-});
+router.get('/:productId', ProductsController.products_get_product);
 
 //handles updating a specific product via id
 router.patch('/:productId', checkAuth, (req, res, next) => {
