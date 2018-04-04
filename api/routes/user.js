@@ -15,7 +15,7 @@ router.post('/signup', (req, res, next) => {
                     message: 'Mail exists'
                 });
             } else {
-                bcrypt.hash(req.body.password, 10, (err) => {
+                bcrypt.hash(req.body.password, 10, (err, encrypted) => {
                     if (err) {
                         return res.status(500).json({
                             error: err
@@ -24,7 +24,7 @@ router.post('/signup', (req, res, next) => {
                         const user = new User({
                             _id: new mongoose.Types.ObjectId(),
                             email: req.body.email,
-                            password: bcrypt.hash
+                            password: encrypted
                         });
                         user
                             .save()
@@ -52,17 +52,22 @@ router.post('/login', (req, res, next) => {
     User.find({ email: req.body.email })
         .exec()
         .then(user => {
+            // Checks if user count is less than one. If so fail.
             if (user.length < 1) {
                 return res.status(401).json({
                     message: 'Authorization Failed.'
                 });
             }
+            console.log(user[0].password);
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+                // Check for error
                 if (err) {
                     return res.status(401).json({
                         message: 'Authorization Failed.'
                     });
                 }
+
+                
                 if (result) {
                     const token = jwt.sign(
                         {
@@ -79,6 +84,7 @@ router.post('/login', (req, res, next) => {
                         token: token
                     });
                 }
+
                 return res.status(401).json({
                     message: 'Authorization Failed.'
                 });
