@@ -1,4 +1,6 @@
 const Product = require('../models/product');
+const mongoose = require('mongoose');
+
 
 exports.products_get_all = (req, res, next) => {
     Product.find()
@@ -31,6 +33,37 @@ exports.products_get_all = (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
+                error: err
+            });
+        });
+}
+
+exports.products_create_product = checkAuth, upload.single('productImage'), (req, res, next) => {
+    console.log(req.file);
+    const product = new Product({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        price: req.body.price,
+        productImage: req.file.path
+    });
+    product.save().then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: 'Created product successfully',
+            createdProduct: {
+                name: result.name,
+                price: result.price,
+                _id: result._id,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:5000/products/' + result._id
+                }
+            }
+        });
+    })
+        .catch(err => {
+            console.log(err);
+            res.stats(500).json({
                 error: err
             });
         });
