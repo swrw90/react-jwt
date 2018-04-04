@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const checkAuth = require('../auth/check-auth');
+const ProductsController = require('../controllers/products');
+
 
 //multer parses bodies of form data. dest specifies a folder where multer will store incoming files
 const multer = require('multer');
@@ -38,41 +40,7 @@ const Product = require('../models/product');
 
 
 //handles GET requests to /products 
-router.get('/', (req, res, next) => {
-    Product.find()
-        .select('name price _id productImage')
-        .exec()
-        .then(docs => {
-            const response = {
-                count: docs.length,
-                products: docs.map(doc => {
-                    return {
-                        name: doc.name,
-                        price: doc.price,
-                        productImage: doc.productImage,
-                        _id: doc._id,
-                        request: {
-                            type: 'GET',
-                            url: 'http://localhost:5000/products/' + doc._id
-                        }
-                    }
-                })
-            };
-            if (docs.length >= 0) {
-                res.status(200).json(response);
-            } else {
-                res.status(404).json({
-                    message: 'No entries found'
-                });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            });
-        });
-});
+router.get('/', ProductsController.products_get_all);
 
 //handles POST requests to /products, returns created product
 router.post('/', checkAuth, upload.single('productImage'), (req, res, next) => {
