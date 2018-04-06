@@ -95,7 +95,7 @@ exports.orders_get_order = (req, res, next) => {
         });
 };
 
-exports.orders_delete_order = checkAuth, (req, res, next) => {
+exports.orders_delete_order = (req, res, next) => {
     Order.remove({ _id: req.params.orderId })
         .exec()
         .then(result => {

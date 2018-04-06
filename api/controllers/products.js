@@ -32,7 +32,7 @@ exports.products_get_all = (req, res, next) => {
             }
         })
         .catch(err => {
-            console.log(err + {test: "this one?"});
+            console.log(err + { test: "this one?" });
             res.status(500).json({
                 error: err,
                 message: "maybe this one?"
@@ -66,7 +66,7 @@ exports.products_create_product = (req, res, next) => {
         });
     })
         .catch(err => {
-            console.log(err + {message: "error dawg"});
+            console.log(err + { message: "error dawg" });
             res.stats(500).json({
                 error: err,
                 message: "this error right heree"
@@ -97,14 +97,13 @@ exports.products_get_product = (req, res, next) => {
                 })
             }
         })
-        .catch(err => console.log("this error" + { 
-                message: "this one right here"            
-        }));
-    res.status(500).json({
-        error: "this error",
-        message: "this one right here"
-    });
-}
+        .catch(err => {
+            res.status(500).json({
+                error: "this error",
+                message: "this one right here"
+            })
+        });
+};
 
 
 //Update a product
