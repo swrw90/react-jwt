@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 const mongoose = require('mongoose');
-
+const checkAuth = require('../auth/check-auth');
 
 //Gets all products
 exports.products_get_all = (req, res, next) => {
@@ -32,16 +32,17 @@ exports.products_get_all = (req, res, next) => {
             }
         })
         .catch(err => {
-            console.log(err);
+            console.log(err + {test: "this one?"});
             res.status(500).json({
-                error: err
+                error: err,
+                message: "maybe this one?"
             });
         });
 }
 
 
 //Create a product
-exports.products_create_product = checkAuth, (req, res, next) => {
+exports.products_create_product = (req, res, next) => {
     console.log(req.file);
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
@@ -65,9 +66,10 @@ exports.products_create_product = checkAuth, (req, res, next) => {
         });
     })
         .catch(err => {
-            console.log(err);
+            console.log(err + {message: "error dawg"});
             res.stats(500).json({
-                error: err
+                error: err,
+                message: "this error right heree"
             });
         });
 }
@@ -95,13 +97,18 @@ exports.products_get_product = (req, res, next) => {
                 })
             }
         })
-        .catch(err => console.log(err));
-    res.status(500).json({ error: err });
+        .catch(err => console.log("this error" + { 
+                message: "this one right here"            
+        }));
+    res.status(500).json({
+        error: "this error",
+        message: "this one right here"
+    });
 }
 
 
 //Update a product
-exports.products_update_product = checkAuth, (req, res, next) => {
+exports.products_update_product = (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
     for (const ops of req.body) {
@@ -122,14 +129,14 @@ exports.products_update_product = checkAuth, (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                error: err
+                error: err,
             });
         });
 }
 
 
 //Deletes a product
-exports.products_delete_product = checkAuth, (req, res, next) => {
+exports.products_delete_product = (req, res, next) => {
     const id = req.params.productId;
     Product.remove({ _id: id })
         .exec()
@@ -146,7 +153,7 @@ exports.products_delete_product = checkAuth, (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                error: err
+                error: err,
             });
         });
 };

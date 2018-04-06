@@ -1,8 +1,10 @@
 const Order = require('../models/order');
 const Product = require('../models/product');
+const checkAuth = require('../auth/check-auth');
+const mongoose = require('mongoose');
 
 
-exports.orders_get_all = checkAuth, (req, res, next) => {
+exports.orders_get_all = (req, res, next) => {
     Order.find()
         .select('product quantity _id')
         .populate('product', 'name')
@@ -30,7 +32,7 @@ exports.orders_get_all = checkAuth, (req, res, next) => {
         });
 };
 
-exports.orders_create_order = checkAuth, (req, res, next) => {
+exports.orders_create_order = (req, res, next) => {
     Product.findById(req.body.productId)
         .then(product => {
             if (!product) {
@@ -46,7 +48,7 @@ exports.orders_create_order = checkAuth, (req, res, next) => {
             return order.save();
         })
         .then(result => {
-            console.log(result);
+
             res.status(201).json({
                 message: 'Order stored',
                 createdOrder: {
@@ -58,17 +60,17 @@ exports.orders_create_order = checkAuth, (req, res, next) => {
                     url: 'http://localhost:5000/orders/' + result._id
                 }
             })
-                .catch(err => {
-                    console.log(err);
-                    res.status(500).json({
-                        message: 'Product not found',
-                        error: err
-                    });
-                });
         })
+        .catch((err) => {
+
+            res.status(500).json({
+                message: 'Product not found',
+                error: err
+            });
+        });
 };
 
-exports.orders_get_order = checkAuth, (req, res, next) => {
+exports.orders_get_order = (req, res, next) => {
     Order.findById(req.params.orderId)
         .populate('product')
         .exec()

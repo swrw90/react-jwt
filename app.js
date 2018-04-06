@@ -11,6 +11,8 @@ const userRoutes = require('./api/routes/user');
 
 // mongoose.connect(uri);
 mongoose.connect(process.env.DB_URI);
+// mongoose.connect(uri);
+
 
 mongoose.Promise = global.Promise;
 
@@ -48,8 +50,9 @@ app.use('/user', userRoutes);
 
 //returns error for requests not found by other routes and forwards the error
 app.use((req, res, next) => {
-    const error = new Error('Not Found');
+    const error = new Error('Not Found Dude');
     error.status = 404;
+    console.log("maybe error here")
     next(error);
 });
 
@@ -59,7 +62,8 @@ app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.json({
         error: {
-            message: error.message
+            message: error.message,
+            test: "Its right here Now how to fix it lol"
         }
     });
 });
