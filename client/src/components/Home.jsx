@@ -11,7 +11,7 @@ class Home extends Component {
                     <p>Additional text for filler etc etc...</p>
                 </Jumbotron>
                 <Link to="/about">
-                    <Button bsStyle="primary">About</Button>
+                    <Button bsStyle="success">About</Button>
                 </Link>
             </Grid>
         );

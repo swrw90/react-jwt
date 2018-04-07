@@ -11,11 +11,14 @@ import Products from './components/Products.jsx';
 class App extends Component {
   render() {
     return (
+
       <Router>
-        <Navbar />
-        <Route exact path='/' component={Home} />
-        <Route path='/about' component={About} />
-        <Route path='/products' component={Products} />
+        <div>
+          <Navbar />
+          <Route exact path='/' component={Home} />
+          <Route path='/about' component={About} />
+          <Route path='/products' component={Products} />
+        </div>
       </Router>
     );
   }
