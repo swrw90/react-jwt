@@ -9,7 +9,7 @@ class CustomNavbar extends React.Component {
             <Navbar default collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to="/">Test1</Link>
+                        <Link to="/">Clothing Co.</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>

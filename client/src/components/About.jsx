@@ -10,7 +10,7 @@ class About extends Component {
             <div>
                 <Image src="assets/dog-people.jpg" className="header-image" />
                 <Grid>
-                    <h2>Products</h2>
+                    <h2>About Us</h2>
                     <Row>
                         <Col xs={12} sm={8} className="main-section">
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
