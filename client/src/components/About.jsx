@@ -20,7 +20,7 @@ class About extends Component {
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                         </Col>
                         <Col xs={12} sm={4} className="sidebar-section">
-                            <Image src="assets/dog-people.jpg" />
+                            <Image src="assets/pexels-photo-279321.jpeg" />
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                         </Col>
                     </Row>
