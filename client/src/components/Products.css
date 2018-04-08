@@ -28,3 +28,9 @@ h3 {
 .price {
     color: gold;
 }
+
+.product-description {
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+}
