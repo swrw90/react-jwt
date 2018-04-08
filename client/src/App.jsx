@@ -8,6 +8,7 @@ import Navbar from './components/CustomNavbar';
 import Home from './components/Home.jsx';
 import About from './components/About.jsx';
 import Products from './components/Products.jsx';
+import Login from './components/Login';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/products' component={Products} />
+          <Route path='/login' component={Login} />
         </div>
       </Router>
     );
