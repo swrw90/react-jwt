@@ -12,11 +12,11 @@ class Home extends Component {
                     <Row>
                         <Col xs={12} sm={8} smOffset={2}>
                             <Jumbotron > <h2>Checkout our summertime deals!</h2>
-                                <Link to="/about">
-                                    <Button bsStyle="success">Learn More</Button>
+                                <Link to="/products">
+                                    <Button bsStyle="success" bsSize="small">Learn More</Button>
                                 </Link>
                             </Jumbotron>
-                            <Image src="assets/pexels-photo-322207.jpeg" center className="about-profile-picture" rounded />
+                            <Image src="assets/pexels-photo-322207.jpeg" className="about-profile-picture" rounded />
                             <h4>Quality in every thread</h4>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
@@ -29,6 +29,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-
