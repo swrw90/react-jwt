@@ -18,19 +18,22 @@ class Products extends Component {
                     </Jumbotron>
                     <Row className="show-grid text-center">
                         <Col xs={12} sm={4} className="person-wrapper">
-                            <Image src="assets/sethw02.jpg" circle className="profile-picture" />
-                            <h3>Test1</h3>
+                            <Image src="assets/night-product-watch-dramatic-84475.jpeg" circle className="profile-picture" />
+                            <h3>Classy Watch</h3>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
+                            <label>$500</label>
                         </Col>
                         <Col xs={12} sm={4} className="person-wrapper">
-                            <Image src="assets/sethw02.jpg" circle className="profile-picture" />
-                            <h3>Test2</h3>
+                            <Image src="assets/pexels-photo-947885.jpeg" circle className="profile-picture" />
+                            <h3>Cool Shades</h3>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
+                            <label>$20</label>                            
                         </Col>
                         <Col xs={12} sm={4} className="person-wrapper">
-                            <Image src="assets/sethw02.jpg" circle className="profile-picture" />
-                            <h3>Test3</h3>
+                            <Image src="assets/pexels-photo-322674.jpeg" circle className="profile-picture" />
+                            <h3>Stylish Bracelets</h3>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
+                            <label>$10</label>                                                        
                         </Col>
                     </Row>
                 </Grid>
