@@ -16,18 +16,18 @@ class Home extends Component {
                 </Jumbotron>
                 <Row className="show-grid text-center">
                     <Col xs={12} sm={4} className="person-wrapper">
-                        <Image src="assets/sethw02.jpg" className="profile-picture" />
+                        <Image src="assets/sethw02.jpg" circle className="profile-picture" />
                         <h3>Test1</h3>
                         <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                     </Col>
                     <Col xs={12} sm={4} className="person-wrapper">
-                        <Image src="assets/sethw02.jpg" className="profile-picture" />
-                        <h3>Test1</h3>
+                        <Image src="assets/sethw02.jpg" circle className="profile-picture" />
+                        <h3>Test2</h3>
                         <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                     </Col>
                     <Col xs={12} sm={4} className="person-wrapper">
-                        <Image src="assets/sethw02.jpg" className="profile-picture" />
-                        <h3>Test1</h3>
+                        <Image src="assets/sethw02.jpg" circle className="profile-picture" />
+                        <h3>Test3</h3>
                         <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                     </Col>
                 </Row>
