@@ -10,11 +10,9 @@ class Products extends Component {
 
                 <Grid>
                     <Jumbotron>
-                        <h2>Some Header Text</h2>
-                        <p>Additional text for filler etc etc...</p>
-                        <Link to="/about">
-                            <Button bsStyle="success">About</Button>
-                        </Link>
+                        <h1>Summertime Sales</h1>
+                        <p>Summer is here and we have the best look for you... </p>
+
                     </Jumbotron>
                     <Row className="show-grid text-center">
                         <Col xs={12} sm={4} className="person-wrapper">

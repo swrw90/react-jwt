@@ -10,11 +10,14 @@ class Home extends Component {
                 <Image src="assets/adult-casual-clothes-296881.jpg" className="header-image" />
                 <Grid>
                     <Row>
-
                         <Col xs={12} sm={8} smOffset={2}>
-                            <Jumbotron > <h2>Some Words Here</h2></Jumbotron>
+                            <Jumbotron > <h2>Checkout our summertime deals!</h2>
+                                <Link to="/about">
+                                    <Button bsStyle="success">Learn More</Button>
+                                </Link>
+                            </Jumbotron>
                             <Image src="assets/pexels-photo-322207.jpeg" center className="about-profile-picture" rounded />
-                            <h4>Something Anything</h4>
+                            <h4>Quality in every thread</h4>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                             <p>Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
                         </Col>
