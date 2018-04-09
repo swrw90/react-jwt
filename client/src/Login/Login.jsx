@@ -7,17 +7,24 @@ import { login } from '../redux/reducers/index';
 
 
 class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
     render() {
+        let { email, password } = this.state;
+        let { isLoginPending, isLoginSuccess, loginError } = this.props
         return (
             <div>
-                <Grid className="login-form-wrapper">
+                <Grid className="login-form-wrapper" onSubmit={this.onSubmit}>
                     <Form horizontal name="loginForm">
                         <FormGroup controlId="formHorizontalEmail">
                             <Col componentClass={ControlLabel} sm={2}>
                                 Email
                             </Col>
                             <Col sm={10}>
-                                <FormControl type="email" name="email" placeholder="Email" />
+                                <FormControl type="email" name="email" placeholder="Email" onChange={e => this.setState({ email: e.target.value })} />
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="formHorizontalPassword">
@@ -25,7 +32,7 @@ class Login extends Component {
                                 Password
                              </Col>
                             <Col sm={10}>
-                                <FormControl type="password" name="password" placeholder="Password" />
+                                <FormControl type="password" name="password" placeholder="Password" onChange={e => this.setState({ password: e.target.value })} />
                             </Col>
                         </FormGroup>
                         <FormGroup>
@@ -36,6 +43,9 @@ class Login extends Component {
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                 <Button type="submit" value="Login">Sign in</Button>
+                                {isLoginPending && <div>Please wait...</div>}
+                                {isLoginSuccess && <div>Welcome back!</div>}
+                                {loginError && <div>loginError.message</div>}
                             </Col>
                         </FormGroup>
                     </Form>
@@ -43,7 +53,15 @@ class Login extends Component {
             </div>
         );
     }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        let { email, password } = this.state;
+        this.props.login(email, password);
+    }
 }
+
+
 
 mapStateToProps = (state) => {
     return {
