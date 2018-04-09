@@ -63,7 +63,7 @@ class Login extends Component {
 
 
 
-mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         isLoginPending: state.isLoginPending,
         isLoginSuccess: state.isLoginSuccess,
@@ -71,7 +71,7 @@ mapStateToProps = (state) => {
     }
 }
 
-mapDispatchToProps = (state) => {
+let mapDispatchToProps = (dispatch) => {
     return {
         login: (email, password) => dispatch(login(email, password))
     };
