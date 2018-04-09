@@ -43,12 +43,13 @@ class Login extends Component {
                         <FormGroup>
                             <Col smOffset={2} sm={10}>
                                 <Button type="submit" value="Login">Sign in</Button>
-                                {isLoginPending && <div>Please wait...</div>}
-                                {isLoginSuccess && <div>Welcome back!</div>}
-                                {loginError && <div>loginError.message</div>}
+                                    {/*{isLoginPending && <div>Please wait...</div>}*/}
+                                    {isLoginSuccess && <div>Welcome back!</div>}
+                                    {/*{loginError && <div>loginError.message</div>}*/}
                             </Col>
                         </FormGroup>
                     </Form>
+
                 </Grid>
             </div>
         );
