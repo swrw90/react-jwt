@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Jumbotron, Grid, Row, Col, ControlLabel, Button, Checkbox, Form, FormGroup, FormControl } from 'react-bootstrap';
 import './Login.css';
 import { connect } from 'react-redux';
+import { login } from '../redux/reducers/index';
 
 
 class Login extends Component {
@@ -52,4 +53,10 @@ mapStateToProps = (state) => {
     }
 }
 
-export default Login;
+mapDispatchToProps = (state) => {
+    return {
+        login: (email, password) => dispatch(login(email, password))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
