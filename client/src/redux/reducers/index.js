@@ -40,3 +40,42 @@ export function login() {
             });
     }
 }
+
+export default function reducer(state = {
+    isLoginPending: false,
+    isLoginSuccess: false,
+    loginError: null
+}, action) {
+
+    switch (action.type) {
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                isLoginSuccess: action.isLoginSuccess
+            }
+
+        case LOGIN_PENDING:
+            return {
+                ...state,
+                isLoginPending: action.isLoginPending
+            }
+
+        case LOGIN_ERROR:
+            return {
+                ...state,
+                loginError: action.loginError
+            }
+        default:
+            return state;
+    }
+}
+
+function sendLoginRequest(email, password) {
+    return new Promise((resolve, reject) => {
+        if (email === 'admin@example.com' && password === 'admin') {
+            return resolve(true);
+        } else {
+            return reject(new Error('Invalid email or password'));
+        }
+    });
+}
