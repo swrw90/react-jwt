@@ -72,10 +72,12 @@ export default function reducer(state = {
 
 function sendLoginRequest(email, password) {
     return new Promise((resolve, reject) => {
-        if (email === 'admin@example.com' && password === 'admin') {
-            return resolve(true);
-        } else {
-            return reject(new Error('Invalid email or password'));
-        }
+        setTimeout(() => {
+            if (email === 'admin@example.com' && password === 'admin') {
+                return resolve(true);
+            } else {
+                return reject(new Error('Invalid email or password'));
+            }
+        }, 1000);
     });
 }
