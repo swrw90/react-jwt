@@ -8,7 +8,7 @@ import Navbar from './components/CustomNavbar';
 import Home from './components/Home';
 import About from './components/About';
 import Products from './components/Products';
-import Login from './components/auth/Login';
+import Login from './Login/Login';
 
 
 class App extends Component {
