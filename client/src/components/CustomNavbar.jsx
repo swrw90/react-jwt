@@ -24,7 +24,7 @@ class CustomNavbar extends React.Component {
                         <NavItem eventKey={3} componentClass={Link} href="/products" to="/products">
                             Products
                             </NavItem>
-                        <NavItem eventKey={2} componentClass={Link} href="/login" to="/login">
+                        <NavItem eventKey={2} componentClass={Link} href="./login" to="/login">
                             Login
                             </NavItem>
                     </Nav>

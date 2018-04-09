@@ -5,10 +5,10 @@ import './index.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navbar from './components/CustomNavbar';
-import Home from './components/Home.jsx';
-import About from './components/About.jsx';
-import Products from './components/Products.jsx';
-import Login from './components/Login';
+import Home from './components/Home';
+import About from './components/About';
+import Products from './components/Products';
+import Login from './components/auth/Login';
 
 
 class App extends Component {
