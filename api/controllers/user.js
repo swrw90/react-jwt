@@ -58,7 +58,6 @@ exports.user_login = (req, res, next) => {
                     message: 'Authorization Failed.'
                 });
             }
-            console.log(user[0].password);
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 // Check for error
                 if (err) {
@@ -78,7 +77,7 @@ exports.user_login = (req, res, next) => {
                         {
                             expiresIn: '1h'
                         }
-                    ); console.log(token);
+                    ); 
                     return res.status(200).json({
                         message: 'Authorization successful',
                         token: token
@@ -110,7 +109,6 @@ exports.user_delete = (req, res, next) => {
             });
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json({
                 error: err
             });

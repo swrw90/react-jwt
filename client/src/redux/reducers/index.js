@@ -28,15 +28,6 @@ function setLoginError(loginError) {
 
 export function login(email, password) {
     return dispatch => {
-        // // Make the network call.
-        // dispatch(setLoginPending(true));
-
-        // // Network call success 
-
-
-        // dispatch(setLoginSuccess(true));
-        // dispatch(setLoginError(true));
-
         dispatch(setLoginPending(true));
         sendLoginRequest(email, password)
             .then(success => {
