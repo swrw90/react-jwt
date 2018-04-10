@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const LOGIN_PENDING = 'LOGIN-PENDING';
 const LOGIN_SUCCESS = 'LOGIN-SUCCESS';
 const LOGIN_ERROR = 'LOGIN-ERROR';
@@ -23,12 +25,19 @@ function setLoginError(loginError) {
     }
 }
 
+
 export function login(email, password) {
     return dispatch => {
-        dispatch(setLoginPending(true));
-        dispatch(setLoginSuccess(true));
-        dispatch(setLoginError(true));
+        // // Make the network call.
+        // dispatch(setLoginPending(true));
 
+        // // Network call success 
+
+
+        // dispatch(setLoginSuccess(true));
+        // dispatch(setLoginError(true));
+
+        dispatch(setLoginPending(true));
         sendLoginRequest(email, password)
             .then(success => {
                 dispatch(setLoginPending(false));
@@ -46,7 +55,6 @@ export default function reducer(state = {
     isLoginSuccess: false,
     loginError: null
 }, action) {
-
     switch (action.type) {
         case LOGIN_SUCCESS:
             return {
@@ -72,12 +80,28 @@ export default function reducer(state = {
 
 function sendLoginRequest(email, password) {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (email === 'admin@example.com' && password === 'admin') {
-                return resolve(true);
-            } else {
+
+        axios.post('http://localhost:5000/user/login', {
+            email: email,
+            password: password
+        })
+            .then(function (response) {
+                if (response.status === 200) {
+                    return resolve(true);
+                } else {
+                    return reject(new Error('Invalid email or password'));
+                }
+            })
+            .catch(function (error) {
                 return reject(new Error('Invalid email or password'));
-            }
-        }, 1000);
+            });
+
+        // setTimeout(() => {
+        //     if (email === 'admin@example.com' && password === 'admin') {
+        //         return resolve(true);
+        //     } else {
+        //         return reject(new Error('Invalid email or password'));
+        //     }
+        // }, 1000);
     });
 }
