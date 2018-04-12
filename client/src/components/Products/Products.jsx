@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Jumbotron, Grid, Row, Col, Image, Button, Thumbnail } from 'react-bootstrap';
 import './Products.css';
+import Product from './Product';
 
 class Products extends Component {
     render() {
@@ -50,21 +51,12 @@ class Products extends Component {
                                     <h3>Broakley</h3>
                                     <p>A brief description about these super cool glasses. Wow, you should buy these!</p>
                                     <p>
-                                        <Button bsSize="xs" bsStyle="success">Add Item</Button>&nbsp;
+                                        <Button bsSize="xs" bsStyle="success" type="submit">Add Item</Button>&nbsp;
                                         <label className="price">$120</label>
                                     </p>
                                 </Thumbnail>
                             </Col>
-                            <Col xs={6} md={4}>
-                                <Thumbnail src="assets/glasses-fluke-angel-therapy-glasses-glass-golden-53156.jpeg" alt="242x200">
-                                    <h3>Parby Warker </h3>
-                                    <p >A brief description about these super cool glasses. Wow, you should buy these!</p>
-                                    <p>
-                                        <Button bsSize="xs" bsStyle="success">Add Item</Button>&nbsp;
-                                        <label className="price">$140</label>
-                                    </p>
-                                </Thumbnail>
-                            </Col>
+                            <Product />
                         </Row>
                     </Grid>
                 </Grid>
