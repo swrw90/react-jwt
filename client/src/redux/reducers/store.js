@@ -9,5 +9,7 @@ let rootReducer = combineReducers({
     products: productReducer,
 });
 
-const store = createStore(rootReducer, {}, applyMiddleware(thunk, logger));
+const store = createStore(rootReducer,
+    {},    
+    applyMiddleware(thunk, logger));
 export default store;
