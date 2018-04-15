@@ -1,32 +1,45 @@
+import axios from 'axios';
+const productsUrl = 'http://localhost:5000/products';
+
 let defaultState = {
-    cartItems: []
+    products: [{
+        name: "",
+        price: "",
+    }]
 };
 
 let productReducer = (state = defaultState, action) => {
-    let newCartItems = [...state.cartItems];
     switch (action.type) {
-        case "ADD_ITEM":
-            newCartItems.push(action.cartItem);
+        case "PRODUCTS_LOADING":
+            console.log("loading");
+            return {
+                ...state
+            }
+        case "PRODUCTS_DATA_SUCCESS":
             return {
                 ...state,
-                cartItems: newCartItems
-            };
-        case "REMOVE_ITEM":
-            newCartItems.splice(action.index, 1);
-            return {
-                ...state,
-                cartItems: newCartItems
-            };
-        case "UPDATE_ITEM":
-            newCartItems[action.index] = action.updatedCartItem;
-            return {
-                ...state,
-                cartItems: newCartItems
+                products: action.data.products
             };
         default:
             return state;
     }
 }
 
-
+export function getProductsData() {
+    return dispatch => {
+        dispatch({
+            type: "PRODUCTS_LOADING",
+        })
+        axios.get(productsUrl)
+            .then(response => {
+                dispatch({
+                    type: 'PRODUCTS_DATA_SUCCESS',
+                    data: response.data,
+                });
+            })
+            .catch(function (error) {
+                return error
+            });
+    }
+}
 export default productReducer;
