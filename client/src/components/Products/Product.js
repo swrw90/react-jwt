@@ -4,16 +4,11 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 class Product extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
-        console.log("product.js render method");
         return (
             <div>
                 <Col xs={6} md={4}>
-                    <Thumbnail src="assets/glasses-fluke-angel-therapy-glasses-glass-golden-53156.jpeg" alt="242x200">
+                    <Thumbnail src={"http://localhost:5000/uploads/2018-04-10T02:59:17.880Zdog-people.jpg"} alt="242x200">
                         <h3>{this.props.product.name}</h3>
                         <p >A brief description about these super cool glasses. Wow, you should buy these!</p>
                         <p>
@@ -27,18 +22,5 @@ class Product extends React.Component {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         getProducts: () => dispatch(getProductsData()),
-//     };
-// };
-
-// const mapStateToProps = (state) => {
-//     return {
-//         products: state.products
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Product);
 export default Product;
 

@@ -6,16 +6,11 @@ import { connect } from 'react-redux';
 import { getProductsData, LoadingState } from '../../redux/reducers/product.reducers';
 
 class Products extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentWillMount() {
         this.props.getProducts();
     }
 
     displayProductComponent() {
-        console.log("Loading state" + this.props.loadingState);
         switch (this.props.loadingState) {
             case LoadingState.pending:
                 break;
@@ -31,7 +26,6 @@ class Products extends Component {
     }
 
     render() {
-        console.log("products.jsx render method");
         return (
             <div>
                 <Grid>
@@ -60,7 +54,7 @@ class Products extends Component {
                     </Row>
                     <Grid>
                         <Row>
-                            {this.displayProductComponent()}
+                            { this.displayProductComponent() }
                         </Row>
                     </Grid>
                 </Grid>
