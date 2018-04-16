@@ -2,12 +2,31 @@ import React, { Component } from 'react';
 import { Jumbotron, Grid, Row, Col, Image, Button, Thumbnail } from 'react-bootstrap';
 import './Products.css';
 import Product from './Product';
+import { getProductsData, LoadingState } from '../../redux/reducers/product.reducers';
+import { connect } from 'react-redux';
 
 class Products extends Component {
+    componentWillMount() {
+        this.props.getProducts();
+    }
+
+    displayProductComponent() {
+        switch (this.props.loadingState) {
+            case LoadingState.pending:
+                break;
+            case LoadingState.loading:
+                break;
+            case LoadingState.finished:
+                var productsComponent = this.props.products.products.map(function (product) {
+                    return <Product key={product._id} product={product} />
+                });
+                return productsComponent;
+        }
+    }
+
     render() {
         return (
             <div>
-
                 <Grid>
                     <Jumbotron>
                         <h1>Summertime Sales</h1>
@@ -35,27 +54,7 @@ class Products extends Component {
                     </Row>
                     <Grid>
                         <Row>
-                            <Col xs={6} md={4}>
-                                <Thumbnail src="assets/pexels-photo-290043.jpeg" alt="242x200">
-                                    <h3>Bay-Ran </h3>
-                                    <p>A brief description about these super cool glasses. Wow, you should buy these!</p>
-                                    <p>
-                                        <Button bsSize="xs" bsStyle="success">Add Item</Button>&nbsp;
-                                        <label className="price">$100</label>
-                                    </p>
-                                </Thumbnail>
-                            </Col>
-                            <Col xs={6} md={4}>
-                                <Thumbnail src="assets/pexels-photo-185769.jpeg" alt="242x200">
-                                    <h3>Broakley</h3>
-                                    <p>A brief description about these super cool glasses. Wow, you should buy these!</p>
-                                    <p>
-                                        <Button bsSize="xs" bsStyle="success" type="submit">Add Item</Button>&nbsp;
-                                        <label className="price">$120</label>
-                                    </p>
-                                </Thumbnail>
-                            </Col>
-                            <Product />
+                            {this.displayProductComponent()}
                         </Row>
                     </Grid>
                 </Grid>
@@ -64,5 +63,16 @@ class Products extends Component {
     }
 }
 
-export default Products;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getProducts: () => dispatch(getProductsData())
+    }
+}
 
+const mapStateToProps = (state) => {
+    return {
+        products: state.products,
+        loadingState: state.products.loadingState
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

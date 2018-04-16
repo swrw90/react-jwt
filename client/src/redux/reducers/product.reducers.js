@@ -1,24 +1,35 @@
 import axios from 'axios';
 const productsUrl = 'http://localhost:5000/products';
 
+export const LoadingState = {
+    pending: 0,
+    loading: 1,
+    finished: 2
+}
+
 let defaultState = {
     products: [{
         name: "",
         price: "",
-    }]
+    }],
+    loadingMessage: '',
+    loadingState: LoadingState.pending
 };
 
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "PRODUCTS_LOADING":
-            console.log("loading");
             return {
-                ...state
+                ...state,
+                loadingMessage: "Loading data",
+                loadingState: LoadingState.loading
             }
         case "PRODUCTS_DATA_SUCCESS":
             return {
                 ...state,
-                products: action.data.products
+                products: action.data.products,
+                loadingMessage: 'Data loaded successfully',
+                loadingState: LoadingState.finished
             };
         default:
             return state;
