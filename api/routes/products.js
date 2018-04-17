@@ -47,7 +47,7 @@ router.post('/', checkAuth, upload.single('productImage'), ProductsController.pr
 router.get('/:productId', ProductsController.products_get_product);
 
 //handles updating a specific product via id
-router.patch('/:productId', checkAuth, ProductsController.products_update_product);
+router.patch('/:productId', checkAuth, upload.single('productImage'), ProductsController.products_update_product);
 
 //handles deleting a specific product via id
 router.delete('/:productId', checkAuth, ProductsController.products_delete_product);
