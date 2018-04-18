@@ -1,4 +1,40 @@
+.about-banner {
+    background-image: url('http://localhost:5000:/uploads/about-banner.jpg');
+    color: whitesmoke;
+    background-size: cover;
+    background-repeat: none;
+}
+
+.about-banner-text {
+    color: whitesmoke;
+}
+
 .sidebar-section img {
-width: 100%;
-margin-bottom: 2em; 
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.employees-container {
+    margin-left: 7%;
+    width: 90%;
+
+}
+
+.employees-header {
+    text-align: center;
+}
+
+.employees {
+    height: 20rem;
+}
+
+.card {
+    width: 18rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 15px;
+    text-align: right;
+    margin-bottom: 5rem;
 }
