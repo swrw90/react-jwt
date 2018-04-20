@@ -4,10 +4,26 @@ import './About.css';
 import { connect } from 'react-redux';
 import { getEmployeesData } from '../../redux/reducers/employee.reducers';
 import { LoadingState } from '../../redux/reducers/product.reducers';
+import Employee from './AboutContainer';
 
 class About extends Component {
     componentWillMount() {
+        this.props.getEmployees();
+    }
 
+    displayEmployeeComponent() {
+        switch (this.props.loadingState) {
+            case LoadingState.pending:
+                break;
+            case LoadingState.loading:
+                break;
+            case LoadingState.finished:
+                var employeesComponent = this.props.employees.employees.map(function (employee) {
+                    return <Employee key={employee._id} employee={employee} />
+            });
+
+            return employeesComponent;
+        }
     }
 
     render() {
@@ -80,4 +96,17 @@ class About extends Component {
     }
 }
 
-export default About;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getEmployees: () => dispatch(getEmployeesData()),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        employees: state.employees,
+        loadingState: state.employees.loadingState
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);
