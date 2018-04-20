@@ -41,7 +41,7 @@ router.post('/', upload.single('employeeImage'), EmployeesController.create_empl
 router.get('/:employeeId', EmployeesController.get_specific_employee);
 
 //handles deleting a specific product via id
-router.delete('/:employeeId', ProductsController.products_delete_product);
+router.delete('/:employeeId', EmployeesController.delete_employee);
 
 
 module.exports = router;

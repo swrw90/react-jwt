@@ -101,3 +101,26 @@ exports.get_specific_employee = (req, res, next) => {
             })
         });
 }
+
+// Deletes an employee
+exports.delete_employee = (req, res, next) => {
+    const id = req.params.employeeId;
+    Employee.remove({ _id: id })
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Employee deleted',
+                request: {
+                    type: 'POST',
+                    url: 'http://localhost:5000/products/',
+                    body: { name: String, description: String }
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err,
+            })
+        })
+}
