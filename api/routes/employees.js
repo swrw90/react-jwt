@@ -33,3 +33,15 @@ const upload = multer({
 
 // handles GET requests to /employees
 router.get('/', EmployeesController.get_all_employees);
+
+//handles POST requests to /employees, returns created employee
+router.post('/', upload.single('employeeImage'), EmployeesController.create_employee);
+
+// handles GET request for specific via employeeId variable, assigns it to new const id via params
+router.get('/:employeeId', EmployeesController.get_specific_employee);
+
+//handles deleting a specific product via id
+router.delete('/:employeeId', ProductsController.products_delete_product);
+
+
+module.exports = router;
