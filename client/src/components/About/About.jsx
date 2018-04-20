@@ -4,6 +4,10 @@ import './About.css';
 
 
 class About extends Component {
+    componentWillMount() {
+
+    }
+    
     render() {
         return (
             <div><Grid>
