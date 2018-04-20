@@ -9,7 +9,7 @@ class Home extends Component {
             <div>
                 <Grid>
                     <Jumbotron className="home-banner">
-                        <h1>Welcome to Clothing Co.</h1>
+                        <h1>Clothing Co.</h1>
                         <p className="home-banner-text">Summer is here and we have the best look for you... </p>
                     </Jumbotron>
                     <Row>
