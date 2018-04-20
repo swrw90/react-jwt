@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Button, Thumbnail, Popover } from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Col, Image, Popover } from 'react-bootstrap';
 import './Products.css';
 import Product from './Product';
 import { connect } from 'react-redux';

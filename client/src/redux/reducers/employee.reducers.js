@@ -1,6 +1,11 @@
 import axios from 'axios';
 const employeesUrl = 'http://localhost:5000/employees';
-import { LoadingState } from '../../redux/reducers/product.reducers';
+
+export const LoadingState = {
+    pending: 0,
+    loading: 1,
+    finished: 2
+};
 
 let defaultState = {
     employees: [{
@@ -34,6 +39,7 @@ let employeeReducer = (state = defaultState, action) => {
 }
 
 export function getEmployeesData() {
+    console.log("insideGetEmployeesData")
     return dispatch => {
         dispatch({
             type: "EMPLOYEES_LOADING",

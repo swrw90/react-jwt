@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Image, Jumbotron, Thumbnail, Well, PageHeader } from 'react-bootstrap';
+import { Grid, Row, Col, Image, Jumbotron, PageHeader } from 'react-bootstrap';
 import './About.css';
 import { connect } from 'react-redux';
-import { getEmployeesData } from '../../redux/reducers/employee.reducers';
-import { LoadingState } from '../../redux/reducers/product.reducers';
+import { getEmployeesData, LoadingState } from '../../redux/reducers/employee.reducers';
 import Employee from './AboutContainer';
 
 class About extends Component {
@@ -20,9 +19,8 @@ class About extends Component {
             case LoadingState.finished:
                 var employeesComponent = this.props.employees.employees.map(function (employee) {
                     return <Employee key={employee._id} employee={employee} />
-            });
-
-            return employeesComponent;
+                });
+                return employeesComponent;
         }
     }
 
@@ -52,42 +50,7 @@ class About extends Component {
                 <Row>
                     <PageHeader className="employees-header">Meet Our Team</PageHeader>
                     <div className="employees-container">
-                        <Col xs={6} md={4} lg={4} >
-                            <div class="card">
-                                <Image className="employees" href="#" alt="171x180" src="assets/employee1.jpg" circle />
-                                <h3 className="card-title">Jeremy Wilkins<p>Designer</p></h3>
-                            </div>
-                        </Col>
-                        <Col xs={6} md={4} lg={4}>
-                            <Image className="employees" href="#" alt="171x180" src="assets/employee2.jpg" circle />
-                            <div class="card">
-                                <h3 className="card-title">Jeremy Wilkins<p>Marketing</p></h3>
-                            </div>
-                        </Col>
-                        <Col xs={6} md={4} lg={4}>
-                            <Image className="employees" href="#" alt="171x180" src="assets/employee3.jpg" circle />
-                            <div class="card">
-                                <h3 className="card-title">Jeremy Wilkins<p>Designer</p></h3>
-                            </div>
-                        </Col>
-                        <Col xs={6} md={4} lg={4}>
-                            <Image className="employees" href="#" alt="171x180" src="assets/employee4.jpg" circle />
-                            <div class="card">
-                                <h3 className="card-title">Jeremy Wilkins<p>Web Developer</p></h3>
-                            </div>
-                        </Col>
-                        <Col xs={6} md={4} lg={4}>
-                            <Image className="employees" href="#" alt="171x180" src="assets/employee5.jpg" circle />
-                            <div class="card">
-                                <h3 className="card-title">Jeremy Wilkins<p>Process Engineer</p></h3>
-                            </div>
-                        </Col>
-                        <Col xs={6} md={4} lg={4}>
-                            <Image className="employees" href="#" alt="171x180" src="assets/employee6.jpg" circle />
-                            <div class="card">
-                                <h3 className="card-title">Jeremy Wilkins<p>Sales Coordinator</p></h3>
-                            </div>
-                        </Col>
+                        {this.displayEmployeeComponent()}
                     </div>
                 </Row>
             </Grid>
@@ -110,3 +73,41 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);
+
+
+                        // <Col xs={6} md={4} lg={4} >
+                        //     <div class="card">
+                        //         <Image className="employees" href="#" alt="171x180" src="assets/employee1.jpg" circle />
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Designer</p></h3>
+                        //     </div>
+                        // </Col>
+                        // <Col xs={6} md={4} lg={4}>
+                        //     <Image className="employees" href="#" alt="171x180" src="assets/employee2.jpg" circle />
+                        //     <div class="card">
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Marketing</p></h3>
+                        //     </div>
+                        // </Col>
+                        // <Col xs={6} md={4} lg={4}>
+                        //     <Image className="employees" href="#" alt="171x180" src="assets/employee3.jpg" circle />
+                        //     <div class="card">
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Designer</p></h3>
+                        //     </div>
+                        // </Col>
+                        // <Col xs={6} md={4} lg={4}>
+                        //     <Image className="employees" href="#" alt="171x180" src="assets/employee4.jpg" circle />
+                        //     <div class="card">
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Web Developer</p></h3>
+                        //     </div>
+                        // </Col>
+                        // <Col xs={6} md={4} lg={4}>
+                        //     <Image className="employees" href="#" alt="171x180" src="assets/employee5.jpg" circle />
+                        //     <div class="card">
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Process Engineer</p></h3>
+                        //     </div>
+                        // </Col>
+                        // <Col xs={6} md={4} lg={4}>
+                        //     <Image className="employees" href="#" alt="171x180" src="assets/employee6.jpg" circle />
+                        //     <div class="card">
+                        //         <h3 className="card-title">Jeremy Wilkins<p>Sales Coordinator</p></h3>
+                        //     </div>
+                        // </Col>

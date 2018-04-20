@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Jumbotron, Grid, Row, Col, ControlLabel, Button, Checkbox, Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Grid, Col, ControlLabel, Button, Checkbox, Form, FormGroup, FormControl } from 'react-bootstrap';
 import './Login.css';
 import { connect } from 'react-redux';
 import { login } from '../redux/reducers/login.reducers';
