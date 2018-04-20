@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Col, Button, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import { getEmployeesData } from '../../redux/reducers/employee.reducers';
-// import { LoadingState } from '../../redux/reducers/product.reducers';
 
 const rootUrl = 'http://localhost:5000/';
 

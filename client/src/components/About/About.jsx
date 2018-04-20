@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Image, Jumbotron, Thumbnail, Well, PageHeader } from 'react-bootstrap';
 import './About.css';
-
+import { connect } from 'react-redux';
+import { getEmployeesData } from '../../redux/reducers/employee.reducers';
+import { LoadingState } from '../../redux/reducers/product.reducers';
 
 class About extends Component {
     componentWillMount() {
 
     }
-    
+
     render() {
         return (
             <div><Grid>
