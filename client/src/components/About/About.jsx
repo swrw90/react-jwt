@@ -67,8 +67,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        employees: state.employees,
-        loadingState: state.employees.loadingState
+        about: state.employees,
+        loadingState: state.loadingState
     }
 }
 

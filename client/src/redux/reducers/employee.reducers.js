@@ -38,14 +38,15 @@ let employeeReducer = (state = defaultState, action) => {
     }
 }
 
+//not getting called
 export function getEmployeesData() {
-    console.log("insideGetEmployeesData")
     return dispatch => {
         dispatch({
             type: "EMPLOYEES_LOADING",
         })
         axios.get(employeesUrl)
             .then(response => {
+                console.log(response + "get call happening")
                 dispatch({
                     type: 'EMPLOYEES_DATA_SUCCESS',
                     data: response.data,
