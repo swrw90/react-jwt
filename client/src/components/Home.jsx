@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Well, Jumbotron, Grid, Row, Col, Image, Button, ButtonGroup } from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Col, Image, Button, ButtonGroup } from 'react-bootstrap';
 import './Home.css';
 
 class Home extends Component {

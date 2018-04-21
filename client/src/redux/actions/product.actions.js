@@ -1,28 +1,28 @@
-import axios from 'axios';
-import thunk from "redux-thunk";
-const productsUrl = 'http://localhost:5000/products';
+// import axios from 'axios';
+// import thunk from "redux-thunk";
+// const productsUrl = 'http://localhost:5000/products';
 
-export function add(cartItem) {
-    return {
-        type: "ADD_ITEM",
-        cartItem
-    }
-}
+// export function add(cartItem) {
+//     return {
+//         type: "ADD_ITEM",
+//         cartItem
+//     }
+// }
 
-export function del(index) {
-    return {
-        type: "REMOVE_ITEM",
-        index
-    }
-}
+// export function del(index) {
+//     return {
+//         type: "REMOVE_ITEM",
+//         index
+//     }
+// }
 
-export function update(index, updatedCartItem) {
-    return {
-        type: "UPDATE_ITEM",
-        index,
-        updatedCartItem
-    }
-}
+// export function update(index, updatedCartItem) {
+//     return {
+//         type: "UPDATE_ITEM",
+//         index,
+//         updatedCartItem
+//     }
+// }
 
 // export function getProductsData() {
 
