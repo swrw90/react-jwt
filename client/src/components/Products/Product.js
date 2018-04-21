@@ -1,7 +1,5 @@
 import React from 'react';
 import { Col, Button, Thumbnail } from 'react-bootstrap';
-import axios from 'axios';
-import { connect } from 'react-redux';
 const rootUrl = 'http://localhost:5000/';
 
 class Product extends React.Component {
