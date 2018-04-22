@@ -22,6 +22,8 @@ class About extends Component {
                 });
                 return employeesComponent;
         }
+        console.log('employeesComponenent' + employeesComponent)
+        //employees component returns undefined
     }
 
     render() {
@@ -67,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        about: state.employees,
+        employees: state.employees,
         loadingState: state.loadingState
     }
 }

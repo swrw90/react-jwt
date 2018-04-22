@@ -9,10 +9,11 @@ import loginReducer from './login.reducers';
 let rootReducer = combineReducers({
     login: loginReducer,
     products: productReducer,
-    about: employeeReducer
+    employees: employeeReducer
 });
 
 const store = createStore(rootReducer,
-    {},    
-    applyMiddleware(thunk, logger));
+    {},
+    applyMiddleware(thunk, logger)
+);
 export default store;

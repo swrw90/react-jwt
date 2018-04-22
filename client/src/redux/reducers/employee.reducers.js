@@ -19,14 +19,12 @@ let defaultState = {
 let employeeReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "EMPLOYEES_LOADING":
-            console.log("loading");
             return {
                 ...state,
                 loadingMessage: "Loading data",
                 loadingState: LoadingState.loading
             }
         case "EMPLOYEES_DATA_SUCCESS":
-            console.log("Successful data retrieval after network call");
             return {
                 ...state,
                 employees: action.data.employees,
@@ -38,7 +36,6 @@ let employeeReducer = (state = defaultState, action) => {
     }
 }
 
-//not getting called
 export function getEmployeesData() {
     return dispatch => {
         dispatch({
@@ -46,7 +43,6 @@ export function getEmployeesData() {
         })
         axios.get(employeesUrl)
             .then(response => {
-                console.log(response + "get call happening")
                 dispatch({
                     type: 'EMPLOYEES_DATA_SUCCESS',
                     data: response.data,
