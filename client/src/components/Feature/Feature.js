@@ -12,7 +12,7 @@ class Feature extends React.Component {
                     <Image src={rootUrl + this.props.product.productImage} circle className="profile-picture" />
                     <h3>
                         <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
-                        </Link><label className="price">{this.props.product.price}</label>
+                        </Link> <label className="price"> ${this.props.product.price}</label>
                     </h3>
                     <p className="product-description">{this.props.product.description}</p>
                 </Col>
