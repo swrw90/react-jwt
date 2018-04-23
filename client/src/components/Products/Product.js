@@ -1,6 +1,6 @@
 import React from 'react';
 import './Products.css';
-import { Col, Button, Thumbnail, Image, Modal } from 'react-bootstrap';
+import { Col, Button, Thumbnail, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const rootUrl = 'http://localhost:5000/';
 
@@ -31,24 +31,10 @@ class Product extends React.Component {
                 <Col xs={6} md={4}>
                     <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
                         <h3>
-                            <Link  target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
-                            <Modal
-                            {...this.props}
-                            bsSize="large"
-                            aria-labelledby="contained-modal-title-lg"
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button onClick={this.props.onHide}>Close</Button>
-                            </Modal.Footer>
-                        </Modal>
+                            <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
                             </Link>
                         </h3>
-                        <p >{this.props.product.description}</p>
+                        <p>{this.props.product.description}</p>
                         <p>
                             <Button bsSize="xs" bsStyle="success" name="add" onSubmit={this.props.handleSubmit}>Add Item</Button>&nbsp;
                                         <label className="price">${this.props.product.price}</label>

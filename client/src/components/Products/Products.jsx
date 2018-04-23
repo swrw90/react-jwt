@@ -19,10 +19,25 @@ class Products extends Component {
                 break;
             case LoadingState.finished:
                 var productsComponent = this.props.products.products.map(function (product) {
-                    return <Product key={product._id} product={product} />
+                    return <Product key={product._id} product={product} /> 
                 });
 
                 return productsComponent;
+        }
+    }
+
+    displayFeatureComponent() {
+        switch (this.props.loadingState) {
+            case LoadingState.pending:
+                break;
+            case LoadingState.loading:
+                break;
+            case LoadingState.finished:
+                var featureComponent = this.props.products.products.map(function (product) {
+                    return <Feature key={product._id} product={product} />
+                });
+
+                return featureComponent.splice([0], 3);
         }
     }
 
@@ -35,9 +50,7 @@ class Products extends Component {
                         <p className="products-banner-text">Summer is here and we have the best look for you... </p>
                     </Jumbotron>
                     <Row className="show-grid text-center">
-                        <Feature />
-                        <Feature />
-                        <Feature />                        
+                        {this.displayFeatureComponent()}
                     </Row>
                     <Popover
                         id="popover-basic"
