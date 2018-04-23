@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Badge, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './CustomNavbar.css';
 
@@ -27,6 +27,9 @@ class CustomNavbar extends React.Component {
                         <NavItem eventKey={2} componentClass={Link} href="./login" to="/login">
                             Login
                             </NavItem>
+                        <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
+                                <Badge>1</Badge>
+                        </NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -9,12 +9,12 @@ import Home from './components/Home';
 import About from './components/About/About';
 import Products from './components/Products/Products';
 import Login from './Login/Login';
+import Cart from './components/Cart/Cart.jsx'
 
 
 class App extends Component {
   render() {
     return (
-
       <Router>
         <div>
           <Navbar />
@@ -22,6 +22,7 @@ class App extends Component {
           <Route path='/about' component={About} />
           <Route path='/products' component={Products} />
           <Route path='/login' component={Login} />
+          <Route path='/cart' component={Cart} />
         </div>
       </Router>
     );

@@ -11,9 +11,11 @@ let defaultState = {
     products: [{
         name: "",
         price: "",
+        productCounter: 0,
+        cartItems: [],
     }],
     loadingMessage: "",
-    loadingState: LoadingState.pending
+    loadingState: LoadingState.pending,
 };
 
 let productReducer = (state = defaultState, action) => {
@@ -53,6 +55,29 @@ export function getProductsData() {
             .catch(function (error) {
                 return error
             });
+    }
+}
+
+export function add(cartItem) {
+    return dispatch => {
+        dispatch({
+            type: "ADD_ITEM",
+            cartItem
+        });
+    }
+}
+
+let addItem = (state = defaultState, action) => {
+    let newCartItems = [...state.cartItems];
+    switch (action.type) {
+        case "ADD_ITEM":
+            // newCartItems.push(action.cartItem);
+            return console.log('addItem called')
+                // ...state,
+                // cartItems: newCartItems
+                ;
+        default:
+            return state;
     }
 }
 export default productReducer;
