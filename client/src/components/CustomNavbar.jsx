@@ -16,7 +16,7 @@ class CustomNavbar extends React.Component {
                 <Navbar.Collapse>
                     <Nav pullRight>
                         <NavItem>
-                            <Link to="/">
+                            <Link to="/cart">
                                 <Badge>1</Badge>
                             </Link>
                         </NavItem>
