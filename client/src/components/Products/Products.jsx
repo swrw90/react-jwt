@@ -57,8 +57,8 @@ class Products extends Component {
                     <Popover
                         id="popover-basic"
                         placement="right"
-                        positionLeft={650}
-                        positionTop={950}
+                        positionLeft={750}
+                        positionTop={1000}
                         title="On Sale!"
                     >
                         These cool shades are <strong>amazing!</strong>Classic design with a comfortable feel.
@@ -66,8 +66,8 @@ class Products extends Component {
                     <Popover
                         id="popover-basic"
                         placement="left"
-                        positionLeft={35}
-                        positionTop={1350}
+                        positionLeft={50}
+                        positionTop={1500}
                         title="New Item!"
                     >
                         Each custom bracelete is <strong>handcrafted</strong> from organic material.
