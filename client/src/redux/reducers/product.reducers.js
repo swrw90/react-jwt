@@ -64,20 +64,22 @@ export function add(cartItem) {
             type: "ADD_ITEM",
             cartItem
         });
+        console.log('add action called')
     }
+
 }
 
 let addItem = (state = defaultState, action) => {
     let newCartItems = [...state.cartItems];
     switch (action.type) {
         case "ADD_ITEM":
-            // newCartItems.push(action.cartItem);
-            return console.log('addItem called')
-                // ...state,
-                // cartItems: newCartItems
-                ;
+            newCartItems.push(action.cartItem);
+            return {
+                ...state,
+                cartItems: newCartItems
+            };
         default:
-            return state;
+            return state + console.log('addItem called');
     }
 }
 export default productReducer;

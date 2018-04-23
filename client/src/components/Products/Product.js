@@ -10,6 +10,7 @@ class Product extends React.Component {
     handleSubmit = (e) => {
         let count = 0;
         e.preventDefault(e);
+        console.log(this.props + 'got called');
         this.props.add(this.state);
         this.setState({
             productCounter: count += count++ ,

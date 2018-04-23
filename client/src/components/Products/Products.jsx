@@ -36,7 +36,6 @@ class Products extends Component {
                 var featureComponent = this.props.products.products.map(function (product) {
                     return <Feature key={product._id} product={product} />
                 });
-
                 return featureComponent.splice([0], 3);
         }
     }
