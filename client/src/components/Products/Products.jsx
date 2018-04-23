@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Jumbotron, Grid, Row, Col, Image, Popover } from 'react-bootstrap';
 import './Products.css';
 import Product from './Product';
+import Feature from '../Feature/Feature';
 import { connect } from 'react-redux';
-import { getProductsData, LoadingState } from '../../redux/reducers/product.reducers';
+import { getProductsData, LoadingState, add } from '../../redux/reducers/product.reducers';
 
 class Products extends Component {
     componentWillMount() {
@@ -34,25 +35,9 @@ class Products extends Component {
                         <p className="products-banner-text">Summer is here and we have the best look for you... </p>
                     </Jumbotron>
                     <Row className="show-grid text-center">
-                        <Col xs={12} sm={4} bsClass="clearfix" className="person-wrapper">
-                            <Image src="assets/night-product-watch-dramatic-84475.jpeg" circle className="profile-picture" />
-                            <h3>Classy Watch<label className="price">$500</label></h3>
-                            <p className="product-description">Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
-                        </Col>
-                        <Col xs={12} sm={4} bsClass="clearfix" className="person-wrapper">
-                            <Image src="assets/pexels-photo-947885.jpeg" circle className="profile-picture" />
-                            <h3>Cool Shades <label className="price">$20</label></h3>
-                            <p className="product-description">Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
-
-                        </Col>
-                        <Col xs={12} sm={4} bsClass="clearfix" className="person-wrapper">
-                            <Image src="assets/pexels-photo-322674.jpeg" circle className="profile-picture" />
-                            <h3>Stylish Bracelets<label className="price">$10</label></h3>
-                            <div xs={12} sm={4} lg={12}>
-                                <p className="product-description">Ridiculus mus pellentesque, maecenas hac praesent ante habitasse scelerisque tristique neque. Luctus conubia cum accumsan risus sociosqu, aliquet tempor dis.</p>
-                            </div>
-                        </Col>
-
+                        <Feature />
+                        <Feature />
+                        <Feature />                        
                     </Row>
                     <Popover
                         id="popover-basic"
@@ -95,7 +80,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         products: state.products,
-        loadingState: state.products.loadingState
+        loadingState: state.products.loadingState,
     }
 }
 

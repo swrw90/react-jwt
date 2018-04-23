@@ -33,6 +33,12 @@
 
 h3 {
     margin-bottom: 1em;
+    color: #8ac44a;
+}
+
+.product-header {
+    color: #8ac44a;
+    text-decoration: none;
 }
 
 .price {

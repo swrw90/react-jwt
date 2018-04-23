@@ -11,13 +11,11 @@ let defaultState = {
     products: [{
         name: "",
         price: "",
+        productCounter: 0,
+        cartItems: [],
     }],
     loadingMessage: "",
     loadingState: LoadingState.pending,
-    cart: {
-    cartItems: [],
-    itemCounter: 0    
-}
 };
 
 let productReducer = (state = defaultState, action) => {
@@ -61,21 +59,23 @@ export function getProductsData() {
 }
 
 export function add(cartItem) {
-    return {
-        type: "ADD_ITEM",
-        cartItem
+    return dispatch => {
+        dispatch({
+            type: "ADD_ITEM",
+            cartItem
+        });
     }
 }
 
-let  addItem = (state = defaultState, action) => {
+let addItem = (state = defaultState, action) => {
     let newCartItems = [...state.cartItems];
     switch (action.type) {
         case "ADD_ITEM":
-        newCartItems.push(action.cartItem);
-            return {
-                ...state,
-                cartItems: newCartItems
-            };
+            // newCartItems.push(action.cartItem);
+            return console.log('addItem called')
+                // ...state,
+                // cartItems: newCartItems
+                ;
         default:
             return state;
     }
