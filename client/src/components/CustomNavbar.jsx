@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Badge, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './CustomNavbar.css';
 
@@ -15,6 +15,11 @@ class CustomNavbar extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav pullRight>
+                        <NavItem>
+                            <Link to="/">
+                                <Badge>1</Badge>
+                            </Link>
+                        </NavItem>
                         <NavItem eventKey={1} componentClass={Link} href="/" to="/">
                             Home
                             </NavItem>
