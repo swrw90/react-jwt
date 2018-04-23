@@ -7,21 +7,13 @@ const rootUrl = 'http://localhost:5000/';
 
 class Product extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-    }
     handleSubmit = (e) => {
-        console.log("called");
+        let count = 0;
         e.preventDefault(e);
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
         this.props.add(this.state);
         this.setState({
-            productCounter: + 1,
-            cartItem: this.props.product._id
+            productCounter: count += count++ ,
+            cartItem: this.props.product._id.push()
         });
     }
 

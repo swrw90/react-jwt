@@ -19,7 +19,7 @@ class Products extends Component {
                 break;
             case LoadingState.finished:
                 var productsComponent = this.props.products.products.map(function (product) {
-                    return <Product key={product._id} product={product} /> 
+                    return <Product key={product._id} product={product} />
                 });
 
                 return productsComponent;
@@ -87,6 +87,8 @@ class Products extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         getProducts: () => dispatch(getProductsData()),
+        addToCart: () => dispatch(add())
+
     };
 };
 
