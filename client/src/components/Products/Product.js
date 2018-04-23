@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Button, Thumbnail } from 'react-bootstrap';
+import { Col, Button, Thumbnail, Image } from 'react-bootstrap';
 const rootUrl = 'http://localhost:5000/';
 
 class Product extends React.Component {
@@ -7,7 +7,7 @@ class Product extends React.Component {
         return (
             <div>
                 <Col xs={6} md={4}>
-                    <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200">
+                <Thumbnail href={rootUrl + this.props.product.productImage} src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
                         <h3>{this.props.product.name}</h3>
                         <p >{this.props.product.description}</p>
                         <p>
