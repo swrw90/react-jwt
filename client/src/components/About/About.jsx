@@ -70,7 +70,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         employees: state.employees,
-        loadingState: state.loadingState
+        loadingState: state.employees.loadingState
     }
 }
 

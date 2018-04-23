@@ -6,7 +6,7 @@ const EmployeesController = require('../controllers/employees');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-    distination: function (req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
