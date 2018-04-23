@@ -1,35 +1,30 @@
 import React from 'react';
 import './Products.css';
-import { Col, Button, Thumbnail, Image, Form } from 'react-bootstrap';
+import { Col, Button, Thumbnail, Image, Form, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LoadingState} from '../../redux/reducers/product.reducers';
 const rootUrl = 'http://localhost:5000/';
 
 
-class Product extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            productCounter: 0,
-            cartItems: [],
-        }
 
-        this.handleClick = this.handleClick.bind(this);
-    }
+class Product extends React.Component {
 
     handleClick = (e) => {
-        let cartItem = this.props.product;
+        let cartItem = this.props;
         let cartItems = [];
         e.preventDefault(e);
         let count = 0;
-        console.log(this.props);
         this.setState({
             productCounter: count++,
             cartItems: cartItems.push(cartItem),
         });
+        console.log(cartItems)
+        console.log(count)
+        
     }
     render() {
         return (
+
             <div>
                 <Col xs={6} md={4}>
                     <Form>
