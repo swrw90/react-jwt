@@ -38,4 +38,15 @@ class CustomNavbar extends React.Component {
     }
 }
 
-export default CustomNavbar;
+const mapDispatchToProps = (dispatch) => {
+    return {
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomNavbar);
