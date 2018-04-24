@@ -86,8 +86,6 @@ class Products extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         getProducts: () => dispatch(getProductsData()),
-        addToCart: () => dispatch(add())
-
     };
 };
 

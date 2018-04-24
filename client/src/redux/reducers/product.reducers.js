@@ -17,7 +17,6 @@ let defaultState = {
     loadingMessage: "",
     loadingState: LoadingState.pending,
 };
-
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "PRODUCTS_LOADING":
@@ -59,23 +58,26 @@ export function getProductsData() {
 }
 
 export function add(cartItem) {
+    console.log( cartItem + 'add action called');
     return dispatch => {
         dispatch({
             type: "ADD_ITEM",
+            count: 0,
             cartItem
-        });
-        console.log('add action called')
-    }
-
+        })
+    };
 }
 
-let addItem = (state = defaultState, action) => {
-    let newCartItems = [...state.cartItems];
+
+export let addItem = (state = defaultState, action) => {
+    let newCartItems = [];
+          console.log('addItem called');    
     switch (action.type) {
         case "ADD_ITEM":
             newCartItems.push(action.cartItem);
             return {
                 ...state,
+                productCounter: action.count++,
                 cartItems: newCartItems
             };
         default:

@@ -1,43 +1,54 @@
 import React from 'react';
 import './Products.css';
-import { Col, Button, Thumbnail, Image } from 'react-bootstrap';
+import { Col, Button, Thumbnail, Image, Form, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { add, addItem } from '../../redux/reducers/product.reducers';
+import { connect } from 'react-redux';
 const rootUrl = 'http://localhost:5000/';
+
 
 
 class Product extends React.Component {
 
-    handleSubmit = (e) => {
-        let count = 0;
+    handleClick = (e) => {
         e.preventDefault(e);
-        console.log(this.props + 'got called');
-        this.props.add(this.state);
-        this.setState({
-            productCounter: count += count++ ,
-            cartItem: this.props.product._id.push()
-        });
+        let cartItem = this.props
+        this.props.addToCart(cartItem)
+        
     }
+
 
     render() {
         return (
+
             <div>
                 <Col xs={6} md={4}>
-                    <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
-                        <h3>
-                            <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
-                            </Link>
-                        </h3>
-                        <p>{this.props.product.description}</p>
-                        <p>
-                            <Button bsSize="xs" bsStyle="success" name="add" onSubmit={this.props.handleSubmit}>Add Item</Button>&nbsp;
+                    <Form>
+                        <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
+                            <h3>
+                                <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
+                                </Link>
+                            </h3>
+                            <p>{this.props.product.description}</p>
+                            <p>
+                                <Button bsSize="xs" bsStyle="success" name="add" onClick={this.handleClick}>Add Item</Button>&nbsp;
                                         <label className="price">${this.props.product.price}</label>
-                        </p>
-                    </Thumbnail>
+                            </p>
+                        </Thumbnail>
+                    </Form>
                 </Col>
             </div>
         )
     }
 }
 
-export default Product;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (cartItem) => dispatch(add(cartItem)),
+
+    };
+};
+
+
+export default connect(null, mapDispatchToProps)(Product);
 

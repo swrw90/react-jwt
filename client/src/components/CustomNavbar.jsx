@@ -28,7 +28,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                                <Badge>1</Badge>
+                                          <Badge>1</Badge>              
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

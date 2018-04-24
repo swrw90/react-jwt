@@ -8,7 +8,7 @@ class Employee extends Component {
             <div>
                 <Col xs={6} md={4} lg={4}>
                     <Image className="employees" href="#" alt="171x180" src={rootUrl + this.props.employee.employeeImage} circle />
-                    <div class="card">
+                    <div className="card">
                         <h3 className="card-title">{this.props.employee.name} <p>{this.props.employee.description}</p> </h3>
                     </div>
                 </Col>
