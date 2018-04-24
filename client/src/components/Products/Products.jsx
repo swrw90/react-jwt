@@ -11,6 +11,10 @@ class Products extends Component {
         this.props.getProducts();
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(this.props.products);
+    }
+
     displayProductComponent() {
         switch (this.props.loadingState) {
             case LoadingState.pending:
