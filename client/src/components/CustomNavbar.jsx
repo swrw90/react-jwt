@@ -29,7 +29,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                            <Badge>1</Badge>
+                            <Badge>0</Badge>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-
+         products: state.products,
     }
 }
 
