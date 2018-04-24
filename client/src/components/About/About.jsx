@@ -21,9 +21,9 @@ class About extends Component {
                     return <Employee key={employee._id} employee={employee} />
                 });
                 return employeesComponent;
+            default:
+                return console.log("display employee component called");
         }
-        console.log('employeesComponenent' + employeesComponent)
-        //employees component returns undefined
     }
 
     render() {

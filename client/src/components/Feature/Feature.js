@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Button, Thumbnail, Image } from 'react-bootstrap';
+import { Col, Image } from 'react-bootstrap';
 const rootUrl = 'http://localhost:5000/';
 
 class Feature extends React.Component {
