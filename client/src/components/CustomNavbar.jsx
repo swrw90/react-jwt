@@ -1,6 +1,7 @@
 import React from 'react';
 import { Badge, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './CustomNavbar.css';
 
 class CustomNavbar extends React.Component {
@@ -37,4 +38,17 @@ class CustomNavbar extends React.Component {
     }
 }
 
-export default CustomNavbar;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // getProducts: () => dispatch(getProductsData()),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        products: state.products,
+        loadingState: state.products.loadingState,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomNavbar);
