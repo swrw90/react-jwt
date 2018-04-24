@@ -58,10 +58,11 @@ export function getProductsData() {
 }
 
 export function add(cartItem) {
-    console.log(cartItem + 'add action called');
+    console.log( cartItem + 'add action called');
     return dispatch => {
         dispatch({
             type: "ADD_ITEM",
+            count: 0,
             cartItem
         })
     };
@@ -76,9 +77,8 @@ export let addItem = (state = defaultState, action) => {
             newCartItems.push(action.cartItem);
             return {
                 ...state,
-                productCounter: action.count,
+                productCounter: action.count++,
                 cartItems: newCartItems
-
             };
         default:
             return state + console.log('addItem called');

@@ -13,13 +13,8 @@ class Product extends React.Component {
     handleClick = (e) => {
         e.preventDefault(e);
         let cartItem = this.props
-        let cartItems = []
-        let count = 0
-        this.setState({
-            productCounter: count++,
-            cartItems: cartItems.push(cartItem),
-        });
-        add(cartItem);
+        this.props.addToCart(cartItem)
+        
     }
 
 
@@ -49,16 +44,11 @@ class Product extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (cartItem) => dispatch(addItem(cartItem)),
+        addToCart: (cartItem) => dispatch(add(cartItem)),
+
     };
 };
 
-const mapStateToProps = (state) => {
-    return {
-        products: state.productCounter,
-        cartItems: state.cartItems
-    }
-}
 
-export default connect(mapDispatchToProps, mapStateToProps)(Product);
+export default connect(null, mapDispatchToProps)(Product);
 
