@@ -9,6 +9,7 @@ import loginReducer from './login.reducers';
 let rootReducer = combineReducers({
     login: loginReducer,
     products: productReducer,
+    employees: employeeReducer
 });
 
 const store = createStore(rootReducer,
