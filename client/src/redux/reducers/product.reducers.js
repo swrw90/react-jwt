@@ -11,12 +11,12 @@ let defaultState = {
     products: [{
         name: "",
         price: "",
-        productCounter: 0,
-        cartItems: [],
     }],
     loadingMessage: "",
     loadingState: LoadingState.pending,
+    cart: []
 };
+
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "PRODUCTS_LOADING":
@@ -25,7 +25,7 @@ let productReducer = (state = defaultState, action) => {
                 ...state,
                 loadingMessage: "Loading data",
                 loadingState: LoadingState.loading
-            }
+            };
         case "PRODUCTS_DATA_SUCCESS":
             console.log("Successful data retrieval after network call");
             return {
@@ -33,6 +33,11 @@ let productReducer = (state = defaultState, action) => {
                 products: action.data.products,
                 loadingMessage: "Data succesfully loaded",
                 loadingState: LoadingState.finished
+            };
+        case "ADD_ITEM":
+            return {
+                ...state,
+                cart: [...state.cart, action.cartItem]
             };
         default:
             return state;
@@ -58,7 +63,6 @@ export function getProductsData() {
 }
 
 export function add(cartItem) {
-    console.log( cartItem + 'add action called');
     return dispatch => {
         dispatch({
             type: "ADD_ITEM",
@@ -68,20 +72,4 @@ export function add(cartItem) {
     };
 }
 
-
-export let addItem = (state = defaultState, action) => {
-    let newCartItems = [];
-          console.log('addItem called');    
-    switch (action.type) {
-        case "ADD_ITEM":
-            newCartItems.push(action.cartItem);
-            return {
-                ...state,
-                productCounter: action.count++,
-                cartItems: newCartItems
-            };
-        default:
-            return state + console.log('addItem called');
-    }
-}
 export default productReducer;

@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import './CustomNavbar.css';
 
 class CustomNavbar extends React.Component {
+
+    componentWillReceiveProps(nextProps) {
+        console.log("Component is receiving daaaaawg");
+        console.log(nextProps.products.cart.length);
+    }
+
     render() {
         return (
             <Navbar default collapseOnSelect>
@@ -29,7 +35,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                                          <Badge>1</Badge>              
+                                          <Badge>{this.props.products.cart.length}</Badge>              
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
@@ -38,11 +44,6 @@ class CustomNavbar extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        // getProducts: () => dispatch(getProductsData()),
-    };
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomNavbar);
+export default connect(mapStateToProps)(CustomNavbar);

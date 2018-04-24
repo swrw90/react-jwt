@@ -12,11 +12,8 @@ class Product extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault(e);
-        let cartItem = this.props
-        this.props.addToCart(cartItem)
-        
+        this.props.addToCart(this.props.product);
     }
-
 
     render() {
         return (
@@ -45,7 +42,6 @@ class Product extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (cartItem) => dispatch(add(cartItem)),
-
     };
 };
 
