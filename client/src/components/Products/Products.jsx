@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Popover } from 'react-bootstrap';
+import { Jumbotron, Grid, Row, Popover } from 'react-bootstrap';
 import './Products.css';
 import Product from './Product';
 import Feature from '../Feature/Feature';
 import { connect } from 'react-redux';
-import { getProductsData, LoadingState, add } from '../../redux/reducers/product.reducers';
+import { getProductsData, LoadingState } from '../../redux/reducers/product.reducers';
 
 class Products extends Component {
     componentWillMount() {
@@ -25,8 +25,9 @@ class Products extends Component {
                 var productsComponent = this.props.products.products.map(function (product) {
                     return <Product key={product._id} product={product} />
                 });
-
                 return productsComponent;
+            default: return console.log("display product component called")
+
         }
     }
 
@@ -41,6 +42,7 @@ class Products extends Component {
                     return <Feature key={product._id} product={product} />
                 });
                 return featureComponent.splice([0], 3);
+            default: return console.log("display feature component called");
         }
     }
 

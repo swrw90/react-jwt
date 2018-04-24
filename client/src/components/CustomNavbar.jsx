@@ -44,7 +44,6 @@ class CustomNavbar extends React.Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     return {
         products: state.products,

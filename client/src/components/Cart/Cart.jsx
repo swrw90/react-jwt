@@ -1,6 +1,5 @@
 import React from 'react';
-import { Col, PageHeader, Button, Thumbnail, Image } from 'react-bootstrap';
-const rootUrl = 'http://localhost:5000/';
+import {  PageHeader } from 'react-bootstrap';
 
 class Cart extends React.Component {
     render() {
