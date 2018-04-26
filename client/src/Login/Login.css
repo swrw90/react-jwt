@@ -1,0 +1,14 @@
+.login-banner {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    background-image: url('http://localhost:5000:/uploads/about-banner.jpg');
+    color: whitesmoke;
+    background-size: cover;
+    background-repeat: none;
+   
+}
+
+.login-banner-text {
+    color: whitesmoke;
+}
