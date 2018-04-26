@@ -1,4 +1,8 @@
-.login-banner {
+.item-container {
+    padding: 5%;
+}
+
+.cart-banner {
     margin-top: 20px;
     text-align: center;
     width: 100%;
@@ -9,6 +13,6 @@
    
 }
 
-.login-banner-text {
+.cart-banner-text {
     color: whitesmoke;
 }
