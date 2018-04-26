@@ -76,13 +76,17 @@ class Cart extends React.Component {
 
 
                     <Col xs={6} md={4}>
-                        <Form>
-                            <h4>Summary</h4>
-                            <ul>
-                                <li>Cart Item <label> $500</label></li>
+                        <Form >
+                        <div  className="form-container">
+                            <h3 className="summary-header">Summary</h3>  
+                            <Col xs={6} md={6}><h4 className="summary-header">Item</h4></Col> 
+                            <Col xs={6} md={6}><h4 className="summary-header">Quantity</h4></Col>                      
+                            <ul className="summary-list">
+                                <li>Cart Item <label> $500</label> <span className="list-item-quantity"> x1</span></li>
                                 <li>Cart Item <label> $500</label></li>
                                 <li>Cart Item <label> $500</label></li>
                             </ul>
+                            </div>
                         </Form>
                     </Col>
                 </Row>
