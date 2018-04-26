@@ -10,9 +10,33 @@
     color: whitesmoke;
     background-size: cover;
     background-repeat: none;
-   
 }
 
 .cart-banner-text {
     color: whitesmoke;
+}
+
+.form-container {
+    float: none;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.summary-header {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.summary-list {
+    float: none;
+    justify-content: center;
+}
+
+.list-item-quantity {
+    text-align: right;
+    float: right;
+    margin-right: 25%;
 }
