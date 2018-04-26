@@ -35,7 +35,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                                          <Badge>{this.props.products.cart.length}</Badge>              
+                                          <Badge>{this.props.cart.length}</Badge>              
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
@@ -48,6 +48,7 @@ const mapStateToProps = (state) => {
     return {
         products: state.products,
         loadingState: state.products.loadingState,
+        cart: state.cart
     }
 }
 
