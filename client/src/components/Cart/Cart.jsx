@@ -10,10 +10,18 @@ class Cart extends React.Component {
     displayCartItem() {
         let cart = this.props.cart;
         var cartItemComponent = cart.map(function (cart) {
-            return  <CartItem key={cart._id} cartItem={cart} />
-            
+            return <CartItem key={cart._id} cartItem={cart} />
+
         });
         return cartItemComponent;
+    }
+
+    displayCheckoutForm() {
+        let cart = this.props.cart;
+        var checkoutFormComponent = cart.map(function (cart) {
+            return <CheckoutForm key={cart._id} cartItem={cart} />
+        });
+        return checkoutFormComponent;
     }
 
     render() {
@@ -29,7 +37,8 @@ class Cart extends React.Component {
                     <Col xs={12} md={8}>
                         {this.displayCartItem()}
                     </Col>
-                    <CheckoutForm/>
+                    {this.props.cart.length === 0 && <div className="empty-cart-container"><h4>Not much here...</h4> <Button bsSize="xsmall" href="/products">Continue Shopping</Button></div>}
+                    {this.props.cart.length > 0 && <CheckoutForm />}
                 </Row>
             </Grid>
         )
