@@ -4,7 +4,7 @@ import './Products.css';
 import Product from './Product';
 import Feature from '../Feature/Feature';
 import { connect } from 'react-redux';
-import { getProductsData, LoadingState } from '../../redux/reducers/product.reducers';
+import { getProductsData, LoadingState  } from '../../redux/reducers/product.reducers';
 
 class Products extends Component {
     componentWillMount() {

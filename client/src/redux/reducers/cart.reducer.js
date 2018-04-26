@@ -8,15 +8,16 @@ export function add(cartItem) {
             type: "ADD_ITEM",
             count: 0,
             cartItem
-        })
+        });
     };
-}
+};
 
 let cartReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "ADD_ITEM":
             return {
                 ...state,
+                message: "Item added to cart",
                 cart: [...state.cart, action.cartItem]
             };
         case "REMOVE_ITEM":
@@ -33,5 +34,6 @@ let cartReducer = (state = defaultState, action) => {
             return state;
     }
 }
+
 
 export default cartReducer;
