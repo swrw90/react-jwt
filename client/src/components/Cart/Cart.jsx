@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader, Thumbnail, Image, Button, Form, Media } from 'react-bootstrap';
+import './cart.css';
 
 class Cart extends React.Component {
     render() {
@@ -8,60 +9,65 @@ class Cart extends React.Component {
                 <PageHeader>Cart Component</PageHeader>
                 <Row className="show-grid">
                     <Col xs={12} md={8}>
-                        <Media>
-                            <Media.Left>
-                                <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
-                            </Media.Left>
-                            <Media.Body>
-                                <div>
-                                    <Media.Heading>Classy Watch</Media.Heading>
-                                </div>
-                                <div>
-                                    <p>Some content about content in the content you purchased content.</p>
+                        <div className="item-container">
+                            <Media>
+                                <Media.Left>
+                                    <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
+                                </Media.Left>
+                                <Media.Body>
                                     <div>
-                                        <Button bsSize="xsmall">Remove</Button>
-                                        <Button bsSize="xsmall">Edit</Button>
+                                        <Media.Heading>Classy Watch</Media.Heading>
                                     </div>
-                                </div>
-                            </Media.Body>
-                        </Media>
-
-                        <Media>
-                            <Media.Left>
-                                <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
-                            </Media.Left>
-                            <Media.Body>
-                                <div>
-                                    <Media.Heading>Classy Watch</Media.Heading>
-                                </div>
-                                <div>
-                                    <p>Some content about content in the content you purchased content.</p>
                                     <div>
-                                        <Button bsSize="xsmall">Remove</Button>
-                                        <Button bsSize="xsmall">Edit</Button>
+                                        <p>Some content about content in the content you purchased content.</p>
+                                        <div>
+                                            <Button bsSize="xsmall">Remove</Button>
+                                            <Button bsSize="xsmall">Edit</Button>
+                                        </div>
                                     </div>
-                                </div>
-                            </Media.Body>
-                        </Media>
+                                </Media.Body>
+                            </Media>
+                        </div>
 
-                        <Media>
-                            <Media.Left>
-                                <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
-                            </Media.Left>
-                            <Media.Body>
-                                <div>
-                                    <Media.Heading>Classy Watch</Media.Heading>
-                                </div>
-                                <div>
-                                    <p>Some content about content in the content you purchased content.</p>
+                        <div className="item-container">
+                            <Media>
+                                <Media.Left>
+                                    <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
+                                </Media.Left>
+                                <Media.Body>
                                     <div>
-                                        <Button bsSize="xsmall">Remove</Button>
-                                        <Button bsSize="xsmall">Edit</Button>
+                                        <Media.Heading>Classy Watch</Media.Heading>
                                     </div>
-                                </div>
-                            </Media.Body>
-                        </Media>
+                                    <div>
+                                        <p>Some content about content in the content you purchased content.</p>
+                                        <div>
+                                            <Button bsSize="xsmall">Remove</Button>
+                                            <Button bsSize="xsmall">Edit</Button>
+                                        </div>
+                                    </div>
+                                </Media.Body>
+                            </Media>
+                        </div>
 
+                        <div className="item-container">
+                            <Media>
+                                <Media.Left>
+                                    <img width={64} height={64} src='assets/night-product-watch-dramatic-84475.jpeg' alt="thumbnail" />
+                                </Media.Left>
+                                <Media.Body>
+                                    <div>
+                                        <Media.Heading>Classy Watch</Media.Heading>
+                                    </div>
+                                    <div>
+                                        <p>Some content about content in the content you purchased content.</p>
+                                        <div>
+                                            <Button bsSize="xsmall">Remove</Button>
+                                            <Button bsSize="xsmall">Edit</Button>
+                                        </div>
+                                    </div>
+                                </Media.Body>
+                            </Media>
+                        </div>
                     </Col>
 
 
