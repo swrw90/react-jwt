@@ -38,7 +38,22 @@ class Cart extends React.Component {
                         {this.displayCartItem()}
                     </Col>
                     {this.props.cart.length === 0 && <div className="empty-cart-container"><h4>Not much here...</h4> <Button bsSize="xsmall" href="/products">Continue Shopping</Button></div>}
-                    {this.props.cart.length > 0 && this.displayCheckoutForm()}
+                    {this.props.cart.length > 0 && <div>
+                        <Col xs={6} md={4}>
+                            <Form >
+                                <div className="form-container">
+                                    <h3 className="summary-header">Summary</h3>
+                                    <Col xs={6} md={4}><h4 className="summary-header">Item</h4></Col>
+                                    <Col xs={6} md={4}><h4 className="summary-header">Price</h4></Col>
+
+                                    <ul className="summary-list">
+                                        <li>{this.props.cart[0].name}<label> ${this.props.cart.price}</label> <span className="list-item-quantity"> x1</span></li>
+                                    </ul>
+                                </div>
+                            </Form>
+                        </Col>
+                    </div>
+                    }
                 </Row>
             </Grid>
         )
