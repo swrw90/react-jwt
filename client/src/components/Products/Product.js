@@ -2,7 +2,7 @@ import React from 'react';
 import './Products.css';
 import { Col, Button, Thumbnail } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { add } from '../../redux/reducers/product.reducers';
+import { add } from '../../redux/reducers/cart.reducer';
 import { connect } from 'react-redux';
 const rootUrl = 'http://localhost:5000/';
 

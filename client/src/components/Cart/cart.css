@@ -40,3 +40,9 @@ ul {
     float: right;
     margin-right: 25%;
 }
+
+.empty-cart-container {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}

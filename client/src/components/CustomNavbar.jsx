@@ -8,7 +8,7 @@ class CustomNavbar extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("Component is receiving daaaaawg");
-        console.log(nextProps.products.cart.length);
+        console.log(nextProps.cart.cart.length);
     }
 
     render() {
@@ -35,7 +35,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                                          <Badge>{this.props.products.cart.length}</Badge>              
+                            <Badge>{this.props.cart.cart.length}</Badge>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
@@ -46,8 +46,7 @@ class CustomNavbar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products,
-        loadingState: state.products.loadingState,
+        cart: state.cart
     }
 }
 

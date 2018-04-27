@@ -34,11 +34,6 @@ let productReducer = (state = defaultState, action) => {
                 loadingMessage: "Data succesfully loaded",
                 loadingState: LoadingState.finished
             };
-        case "ADD_ITEM":
-            return {
-                ...state,
-                cart: [...state.cart, action.cartItem]
-            };
         default:
             return state;
     }
@@ -62,14 +57,5 @@ export function getProductsData() {
     }
 }
 
-export function add(cartItem) {
-    return dispatch => {
-        dispatch({
-            type: "ADD_ITEM",
-            count: 0,
-            cartItem
-        })
-    };
-}
 
 export default productReducer;
