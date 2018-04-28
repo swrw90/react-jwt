@@ -10,6 +10,7 @@ class CheckoutForm extends React.Component {
     render() {
         return (
             <div>
+            
                 <ul className="summary-list">
                     <li>{this.props.cart.cart[0].name}<label> ${this.props.cart.cart[0].price}</label></li>
                 </ul>
