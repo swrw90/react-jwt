@@ -23,7 +23,7 @@ let cartReducer = (state = defaultState, action) => {
         case "REMOVE_ITEM":
             //splice item
             return {
-                ...state,
+                ...state.cart.splice(action.cartItem)
             };
         case "UPDATE_ITEM":
             //Edit Quantity
