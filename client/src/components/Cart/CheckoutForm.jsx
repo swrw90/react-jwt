@@ -29,15 +29,18 @@ class CheckoutForm extends React.Component {
                     <Form >
                         <div className="form-container">
                             <h3 className="summary-header">Summary</h3>
-                            <Col xs={6} md={4}><h4 className="summary-header">Item</h4></Col>
-                            <Col xs={6} md={4}><h4 className="summary-header">Price</h4></Col>
-                            <ul className="summary-list">
-                                {this.displayAllCartItemsName ()}
-                            </ul>
-
-                            <ul>
-                                {this.displayAllCartItemsPrice()}
-                            </ul>
+                            <div>
+                                <Col xs={6} md={4}><h4 className="summary-header">Item</h4></Col>
+                                <ul className="summary-list">
+                                    {this.displayAllCartItemsName()}
+                                </ul>
+                            </div>
+                            <div>
+                                <Col xs={6} md={4}><h4 className="summary-header">Price</h4></Col>
+                                <ul>
+                                    {this.displayAllCartItemsPrice()}
+                                </ul>
+                            </div>
                         </div>
                     </Form>
                 </Col>

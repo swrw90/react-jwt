@@ -9,9 +9,8 @@ class Cart extends React.Component {
 
     displayCartItem() {
         let cart = this.props.cart;
-        var cartItemComponent = cart.map(function (cart) {
-            return <CartItem key={cart._id} cartItem={cart} />
-
+        var cartItemComponent = cart.map(function (product) {
+            return <CartItem key={product._id} cartItem={product} />
         });
         return cartItemComponent;
     }
