@@ -16,14 +16,6 @@ class Cart extends React.Component {
         return cartItemComponent;
     }
 
-    displayCheckoutForm() {
-        let cart = this.props.cart;
-        var checkoutFormComponent = cart.map(function (cart) {
-            return <CheckoutForm key={cart._id} cartItem={cart} />
-        });
-        return checkoutFormComponent;
-    }
-
     render() {
         console.log(this.props.cart.length)
 
@@ -38,18 +30,7 @@ class Cart extends React.Component {
                         {this.displayCartItem()}
                     </Col>
                     {this.props.cart.length === 0 && <div className="empty-cart-container"><h4>Not much here...</h4> <Button bsSize="xsmall" href="/products">Continue Shopping</Button></div>}
-                    {this.props.cart.length > 0 && <div>
-                        <Col xs={6} md={4}>
-                            <Form >
-                                <div className="form-container">
-                                    <h3 className="summary-header">Summary</h3>
-                                    <Col xs={6} md={4}><h4 className="summary-header">Item</h4></Col>
-                                    <Col xs={6} md={4}><h4 className="summary-header">Price</h4></Col>
-                                    {this.displayCheckoutForm()}
-                                </div>
-                            </Form>
-                        </Col>
-                    </div>
+                    {this.props.cart.length > 0 && <CheckoutForm />
                     }
                 </Row>
             </Grid>

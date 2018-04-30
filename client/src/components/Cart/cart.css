@@ -19,7 +19,7 @@
 .form-container {
     float: none;
     justify-content: center;
-    background-color: lightgray;
+    /*background-color: lightgray;*/
 }
 
 .summary-header {
