@@ -13,7 +13,7 @@ class CustomNavbar extends React.Component {
 
     render() {
         return (
-            <Navbar default collapseOnSelect>
+            <Navbar default collapseOnSelect className="navbar">
                 <Navbar.Header>
                     <Navbar.Brand>
                         <Link to="/">Clothing Co.</Link>

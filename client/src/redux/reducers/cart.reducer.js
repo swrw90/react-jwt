@@ -6,11 +6,20 @@ export function add(cartItem) {
     return dispatch => {
         dispatch({
             type: "ADD_ITEM",
-            count: 0,
             cartItem
         });
     };
 };
+
+export function del(cartItem) {
+    return dispatch => {
+        dispatch({
+            type: "REMOVE_ITEM",
+            cartItem
+        });
+    }
+}
+
 
 let cartReducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -21,9 +30,12 @@ let cartReducer = (state = defaultState, action) => {
                 cart: [...state.cart, action.cartItem]
             };
         case "REMOVE_ITEM":
-            //splice item
+            // 1. Splice.
+            // 2. Functional. Filter(return a new array without the removed item.)
+
             return {
-                ...state.cart.splice(action.cartItem)
+                ...state,
+               // cart:  spliced array
             };
         case "UPDATE_ITEM":
             //Edit Quantity

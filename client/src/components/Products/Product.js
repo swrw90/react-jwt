@@ -7,7 +7,13 @@ import { connect } from 'react-redux';
 const rootUrl = 'http://localhost:5000/';
 
 
-
+// This class represents a product on Products page.
+// Prop: Product object is passed in from Products.jsx file.
+// Product object:
+//   - name
+//   - price
+//   - description
+//   - imageURL
 class Product extends React.Component {
 
     handleClick = (e) => {
@@ -20,17 +26,17 @@ class Product extends React.Component {
 
             <div>
                 <Col xs={6} md={4}>
-                        <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
-                            <h3>
-                                <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
-                                </Link>
-                            </h3>
-                            <p>{this.props.product.description}</p>
-                            <p>
-                                <Button bsSize="xs" bsStyle="success" name="add" onClick={this.handleClick}>Add Item</Button>&nbsp;
+                    <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
+                        <h3>
+                            <Link target="_blank" className="product-header" to={rootUrl + this.props.product.productImage} href={rootUrl + this.props.product.productImage}>{this.props.product.name}
+                            </Link>
+                        </h3>
+                        <p>{this.props.product.description}</p>
+                        <p>
+                            <Button bsSize="xs" bsStyle="success" name="add" onClick={this.handleClick}>Add Item</Button>&nbsp;
                                         <label className="price">${this.props.product.price}</label>
-                            </p>
-                        </Thumbnail>
+                        </p>
+                    </Thumbnail>
                 </Col>
             </div>
         )
@@ -39,7 +45,7 @@ class Product extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (cartItem) => dispatch(add(cartItem)),
+        addToCart: cartItem => dispatch(add(cartItem)),
     };
 };
 

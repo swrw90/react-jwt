@@ -1,9 +1,17 @@
 import React from 'react';
 import { Grid, Row, Col, Jumbotron, PageHeader, Thumbnail, Image, Button, Form, Media } from 'react-bootstrap';
 import './cart.css';
-const rootUrl = 'http://localhost:5000/'
+import { connect } from 'react-redux';
+import { del } from '../../redux/reducers/cart.reducer';
+const rootUrl = 'http://localhost:5000/';
 
 class CartItem extends React.Component {
+
+    handleRemove(e) {
+        e.preventDefault(e);
+        this.props.removeItem(this.props.cartItem);
+    }
+
     render() {
         return (
             <div className="item-container">
@@ -18,7 +26,7 @@ class CartItem extends React.Component {
                         <div>
                             <p>{this.props.cartItem.description}</p>
                             <div>
-                                <Button bsSize="xsmall">Remove</Button>
+                                <Button bsSize="xsmall" onClick={this.handleRemove.bind(this)}>Remove</Button>
                                 <Button bsSize="xsmall">Edit</Button>
                             </div>
                         </div>
@@ -30,4 +38,11 @@ class CartItem extends React.Component {
 
 
 }
-export default CartItem;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        removeItem: (item) => dispatch(del(item))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(CartItem);
