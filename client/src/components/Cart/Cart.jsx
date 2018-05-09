@@ -16,7 +16,6 @@ class Cart extends React.Component {
     }
 
     render() {
-        console.log(this.props.cart.length)
 
         return (
             <Grid>
