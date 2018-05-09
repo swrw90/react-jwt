@@ -45,4 +45,10 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-export default connect(null, mapDispatchToProps)(CartItem);
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
