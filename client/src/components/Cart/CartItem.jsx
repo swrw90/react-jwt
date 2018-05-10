@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Jumbotron, PageHeader, Thumbnail, Image, Button, Form, Media } from 'react-bootstrap';
 import './cart.css';
 import { connect } from 'react-redux';
-import { del, reduceQuantity } from '../../redux/reducers/cart.reducer';
+import { del, reduceQuantity, incrementQuantity } from '../../redux/reducers/cart.reducer';
 const rootUrl = 'http://localhost:5000/';
 
 class CartItem extends React.Component {
@@ -16,6 +16,10 @@ class CartItem extends React.Component {
     handleQuantityDecrement(e) {
         e.preventDefault(e);
         this.props.decreaseQuantity(this.props.cartItem);
+    }
+    handleQuantityIncrease(e) {
+        e.preventDefault(e);
+        this.props.increaseQuantity(this.props.cartItem);
     }
 
     render() {
@@ -35,7 +39,7 @@ class CartItem extends React.Component {
                                 <Button bsSize="xsmall" onClick={this.handleRemove.bind(this)}>Remove</Button>
                                 <Button bsSize="xsmall" onClick={this.handleQuantityDecrement.bind(this)}> - </Button>
                                 <p>{this.props.cartItem.quantity}</p>
-                                <Button bsSize="xsmall"> + </Button>
+                                <Button bsSize="xsmall" onClick={this.handleQuantityIncrease.bind(this)}> + </Button>
                             </div>
                         </div>
                     </Media.Body>
@@ -50,7 +54,8 @@ class CartItem extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         removeItem: (item) => dispatch(del(item)),
-        decreaseQuantity: (item) => dispatch(reduceQuantity(item))
+        decreaseQuantity: (item) => dispatch(reduceQuantity(item)),
+        increaseQuantity: (item) => dispatch(incrementQuantity(item))
     };
 }
 

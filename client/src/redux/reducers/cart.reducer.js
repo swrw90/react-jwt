@@ -1,8 +1,6 @@
-var cartItemQuantity = 0;
 
 let defaultState = {
     cart: [],
-    quantity: cartItemQuantity
 };
 
 export function add(cartItem) {
@@ -32,6 +30,15 @@ export function reduceQuantity(item) {
     }
 }
 
+export function incrementQuantity(item) {
+    return dispatch => {
+        dispatch({
+            type: "INCREMENT_QUANTITY",
+            item
+        })
+    }
+}
+
 let cartReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "ADD_ITEM":
@@ -39,7 +46,7 @@ let cartReducer = (state = defaultState, action) => {
                 ...state,
                 message: "Item added to cart",
                 cart: [...state.cart, action.cartItem],
-                quantity: state.quantity++
+                quantity: action.cartItem.quantity++
             };
         case "REMOVE_ITEM":
             let filterCondition = element => element._id != action.item._id
@@ -52,6 +59,11 @@ let cartReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 quantity: action.item.quantity--
+            };
+        case "INCREMENT_QUANTITY":
+            return {
+                ...state,
+                quantity: action.item.quantity++
             };
         default:
             return state;
