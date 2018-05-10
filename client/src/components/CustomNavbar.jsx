@@ -8,7 +8,7 @@ class CustomNavbar extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("Component is receiving daaaaawg");
-        console.log(nextProps.cart.cart.length);
+        console.log(nextProps.cart.totalQuantity);
     }
 
     render() {
@@ -35,7 +35,7 @@ class CustomNavbar extends React.Component {
                             Login
                             </NavItem>
                         <NavItem eventKey={4} componentClass={Link} href="/cart" to="/cart">
-                            <Badge>{this.props.cart.cart.length + this.props.cart.quantity}</Badge>
+                            <Badge>{this.props.cart.totalQuantity}</Badge>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>

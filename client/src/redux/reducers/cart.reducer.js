@@ -1,6 +1,7 @@
 
 let defaultState = {
     cart: [],
+    totalQuantity: 0
 };
 
 export function add(cartItem) {
@@ -45,14 +46,16 @@ let cartReducer = (state = defaultState, action) => {
             if (action.cartItem.quantity > 0) {
                 return {
                     ...state,
-                    quantity: action.cartItem.quantity++
+                    quantity: action.cartItem.quantity++,
+                    totalQuantity: state.totalQuantity + 1
                 }
             } else {
                 return {
                     ...state,
                     message: "Item added to cart",
                     cart: [...state.cart, action.cartItem],
-                    quantity: action.cartItem.quantity++
+                    quantity: action.cartItem.quantity++,
+                    totalQuantity: state.totalQuantity + 1
                 }
             };
         case "REMOVE_ITEM":
@@ -65,7 +68,8 @@ let cartReducer = (state = defaultState, action) => {
         case "DECREMENT_QUANTITY":
             return {
                 ...state,
-                quantity: action.item.quantity--
+                quantity: action.item.quantity--,
+                
             };
         case "INCREMENT_QUANTITY":
             return {

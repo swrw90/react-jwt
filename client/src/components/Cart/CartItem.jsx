@@ -23,6 +23,7 @@ class CartItem extends React.Component {
     handleQuantityIncrease(e) {
         e.preventDefault(e);
         this.props.increaseQuantity(this.props.cartItem);
+        this.props.cartItem.totalQuantity++
     }
 
     render() {
@@ -65,7 +66,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         cart: state.cart,
-        quantity: state.quantity
+        quantity: state.quantity,
+        totalQuantity: state.totalQuantity
     }
 }
 
