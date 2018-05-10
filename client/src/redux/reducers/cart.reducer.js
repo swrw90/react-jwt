@@ -42,11 +42,18 @@ export function incrementQuantity(item) {
 let cartReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "ADD_ITEM":
-            return {
-                ...state,
-                message: "Item added to cart",
-                cart: [...state.cart, action.cartItem],
-                quantity: action.cartItem.quantity++
+            if (action.cartItem.quantity > 0) {
+                return {
+                    ...state,
+                    quantity: action.cartItem.quantity++
+                }
+            } else {
+                return {
+                    ...state,
+                    message: "Item added to cart",
+                    cart: [...state.cart, action.cartItem],
+                    quantity: action.cartItem.quantity++
+                }
             };
         case "REMOVE_ITEM":
             let filterCondition = element => element._id != action.item._id
