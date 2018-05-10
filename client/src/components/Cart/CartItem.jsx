@@ -10,6 +10,7 @@ class CartItem extends React.Component {
     handleRemove(e) {
         e.preventDefault(e);
         this.props.removeItem(this.props.cartItem);
+        console.log(this.props.cartItem);
     }
 
     render() {
@@ -27,7 +28,9 @@ class CartItem extends React.Component {
                             <p>{this.props.cartItem.description}</p>
                             <div>
                                 <Button bsSize="xsmall" onClick={this.handleRemove.bind(this)}>Remove</Button>
-                                <Button bsSize="xsmall">Edit</Button>
+                                <Button bsSize="xsmall"> - </Button>
+                                <p>{this.props.cartItem.quantity}</p>
+                                <Button bsSize="xsmall"> + </Button>
                             </div>
                         </div>
                     </Media.Body>
@@ -47,7 +50,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        quantity: state.quantity
     }
 }
 

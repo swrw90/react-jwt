@@ -5,7 +5,7 @@ const checkAuth = require('../auth/check-auth');
 //Gets all products
 exports.products_get_all = (req, res, next) => {
     Product.find()
-        .select('name price description _id productImage')
+        .select('name price description quantity _id productImage')
         .exec()
         .then(docs => {
             const response = {
@@ -15,6 +15,7 @@ exports.products_get_all = (req, res, next) => {
                         name: doc.name,
                         price: doc.price,
                         description: doc.description,
+                        quantity: doc.quantity,
                         productImage: doc.productImage,
                         _id: doc._id,
                         request: {
@@ -48,6 +49,7 @@ exports.products_create_product = (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         price: req.body.price,
+        quantity: req.body.quantity,
         description: req.body.description,
         productImage: req.file.path
     });
@@ -58,6 +60,7 @@ exports.products_create_product = (req, res, next) => {
             createdProduct: {
                 name: result.name,
                 price: result.price,
+                quantity: result.quantity,
                 description: result.description,
                 _id: result._id,
                 request: {
@@ -81,7 +84,7 @@ exports.products_create_product = (req, res, next) => {
 exports.products_get_product = (req, res, next) => {
     const id = req.params.productId;
     Product.findById(id)
-        .select('name price description _id productImage')
+        .select('name price description quantity _id productImage')
         .exec()
         .then(doc => {
             console.log("From the database", doc);
@@ -147,7 +150,7 @@ exports.products_delete_product = (req, res, next) => {
                 request: {
                     type: 'POST',
                     url: 'http//localhost:5000/products/',
-                    body: { name: String, price: Number, description: String }
+                    body: { name: String, price: Number, description: String, quantity: Number }
                 }
             })
         })

@@ -1,5 +1,8 @@
+let cartItemQuantity = 0;
+
 let defaultState = {
-    cart: []
+    cart: [],
+    quantity: cartItemQuantity
 };
 
 export function add(cartItem) {
@@ -26,14 +29,15 @@ let cartReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 message: "Item added to cart",
-                cart: [...state.cart, action.cartItem]
+                cart: [...state.cart, action.cartItem],
+                quantity: cartItemQuantity++
             };
         case "REMOVE_ITEM":
             let filterCondition = element => element._id != action.item._id
 
             return {
                 ...state,
-                cart: state.cart.filter(filterCondition) 
+                cart: state.cart.filter(filterCondition)
             };
         case "UPDATE_ITEM":
             //Edit Quantity
