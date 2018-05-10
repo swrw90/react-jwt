@@ -16,6 +16,9 @@ class CartItem extends React.Component {
     handleQuantityDecrement(e) {
         e.preventDefault(e);
         this.props.decreaseQuantity(this.props.cartItem);
+        if (this.props.cartItem.quantity === 0) {
+            this.props.removeItem(this.props.cartItem);
+        }
     }
     handleQuantityIncrease(e) {
         e.preventDefault(e);
