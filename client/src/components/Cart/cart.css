@@ -46,3 +46,7 @@ ul {
     justify-content: center;
     width: 100%;
 }
+
+.item-button-container {
+    width: 300px;
+}
