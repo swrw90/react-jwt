@@ -75,12 +75,11 @@ let cartReducer = (state = defaultState, action) => {
         case "INCREMENT_QUANTITY":
             return {
                 ...state,
-                quantity: action.item.quantity++
+                quantity: action.item.quantity++,
+                totalQuantity: state.totalQuantity + 1
             };
         default:
             return state;
     }
 }
-
-
 export default cartReducer;
