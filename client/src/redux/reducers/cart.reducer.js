@@ -63,13 +63,14 @@ let cartReducer = (state = defaultState, action) => {
 
             return {
                 ...state,
-                cart: state.cart.filter(filterCondition)
+                cart: state.cart.filter(filterCondition),
+                totalQuantity: state.totalQuantity - action.item.quantity
             };
         case "DECREMENT_QUANTITY":
             return {
                 ...state,
                 quantity: action.item.quantity--,
-                
+                totalQuantity: state.totalQuantity - 1
             };
         case "INCREMENT_QUANTITY":
             return {
