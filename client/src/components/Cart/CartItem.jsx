@@ -39,7 +39,7 @@ class CartItem extends React.Component {
                         </div>
                         <div>
                             <p>{this.props.cartItem.description}</p>
-                            <div>
+                            <div className="item-button-container">
                                 <Button bsSize="xsmall" onClick={this.handleRemove.bind(this)}>Remove</Button>
                                 <Button bsSize="xsmall" onClick={this.handleQuantityDecrement.bind(this)}> - </Button>
                                 <p>{this.props.cartItem.quantity}</p>

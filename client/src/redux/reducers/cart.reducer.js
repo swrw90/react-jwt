@@ -1,7 +1,8 @@
 
 let defaultState = {
     cart: [],
-    totalQuantity: 0
+    totalQuantity: 0,
+    itemPrice: 0
 };
 
 export function add(cartItem) {
@@ -47,7 +48,8 @@ let cartReducer = (state = defaultState, action) => {
                 return {
                     ...state,
                     quantity: action.cartItem.quantity++,
-                    totalQuantity: state.totalQuantity + 1
+                    totalQuantity: state.totalQuantity + 1,
+                    itemPrice: action.cartItem.price + action.cartItem.price
                 }
             } else {
                 return {
@@ -55,7 +57,8 @@ let cartReducer = (state = defaultState, action) => {
                     message: "Item added to cart",
                     cart: [...state.cart, action.cartItem],
                     quantity: action.cartItem.quantity++,
-                    totalQuantity: state.totalQuantity + 1
+                    totalQuantity: state.totalQuantity + 1,
+                    itemPrice: action.cartItem.price
                 }
             };
         case "REMOVE_ITEM":
@@ -63,23 +66,24 @@ let cartReducer = (state = defaultState, action) => {
 
             return {
                 ...state,
-                cart: state.cart.filter(filterCondition)
+                cart: state.cart.filter(filterCondition),
+                totalQuantity: state.totalQuantity - action.item.quantity
             };
         case "DECREMENT_QUANTITY":
             return {
                 ...state,
                 quantity: action.item.quantity--,
-                
+                totalQuantity: state.totalQuantity - 1
             };
         case "INCREMENT_QUANTITY":
             return {
                 ...state,
-                quantity: action.item.quantity++
+                quantity: action.item.quantity++,
+                totalQuantity: state.totalQuantity + 1,
+                itemPrice: action.item.price + action.item.price
             };
         default:
             return state;
     }
 }
-
-
 export default cartReducer;
