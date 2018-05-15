@@ -15,8 +15,8 @@ class CheckoutForm extends React.Component {
     }
 
     displayTotal(total) {
-        console.log(this.props.totalPrice)
-        let grandTotal = this.props.totalPrice
+        console.log(this.props.cart.totalPrice)
+        let grandTotal = this.props.cart.totalPrice
         return grandTotal
     }
 
