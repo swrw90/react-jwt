@@ -16,7 +16,6 @@ let defaultState = {
     loadingState: LoadingState.pending,
 };
 
-
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "PRODUCTS_LOADING":
@@ -59,32 +58,3 @@ export function getProductsData() {
 
 
 export default productReducer;
-
-
-
-
-
-// Cart Object
-// totalQuantity
-// totalPrice
-
-
-// Product Object $20
-// quanity 
-// totalItemPrice
-
-// 3 sunglasses
-// wuantiy = 3
-// totalItemPrice $60
-
-
-// 2 lameWatches $40
-// quantity = 2
-// totalItemPrice = $80
-
-
-
-// Cart -
-// cart = [Product]
-// totalQuantiy = 5
-// totalPrice = $140

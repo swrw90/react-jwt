@@ -7,21 +7,18 @@ import './cart.css';
 class CheckoutForm extends React.Component {
 
     displayAllCheckoutItems() {
-        console.log(this.props.cart.itemPrice)
         let cart = this.props.cart.cart;
         var checkoutCartItems = cart.map(function (cart) {
-            return <li key={cart._id}>Qty: {cart.quantity} {cart.name} ${cart.price} </li>
+            return <li key={cart._id}>Qty: {cart.quantity} {cart.name} @ ${cart.price} </li>
         });
         return checkoutCartItems;
     }
 
-    // displayAllCartItemsPrice() {
-    //     let cart = this.props.cart.cart;
-    //     var checkoutCartItems = cart.map(function (cart) {
-    //         return <li key={cart._id}>{cart.price}</li>
-    //     });
-    //     return checkoutCartItems;
-    // }
+    displayTotal(total) {
+        console.log(this.props.totalPrice)
+        let grandTotal = this.props.totalPrice
+        return grandTotal
+    }
 
     render() {
         return (
@@ -30,19 +27,13 @@ class CheckoutForm extends React.Component {
                     <Form >
                         <div className="form-container">
                             <h3 className="summary-header">Summary</h3>
-                            <p>total: 000</p>
+                            <p>total: {this.displayTotal()}</p>
                             <div>
                                 <ul className="summary-list">
                                     {this.displayAllCheckoutItems()}
                                 </ul>
 
                             </div>
-                            {/*<div>
-                                <Col xs={6} md={4}></Col>
-                                <ul>
-                                    {this.displayAllCartItemsPrice()}
-                                </ul>
-                            </div>*/}
                         </div>
                     </Form>
                 </Col>
@@ -53,7 +44,8 @@ class CheckoutForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        totalPrice: state.totalPrice
     }
 }
 

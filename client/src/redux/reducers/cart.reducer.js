@@ -1,4 +1,3 @@
-
 let defaultState = {
     cart: [],
     totalQuantity: 0,
@@ -51,37 +50,24 @@ export function updateTotal(item) {
     }
 }
 
-
 export function calculateTotal(products) {
-    // 1. for each item in prodcuts array
-
-    // 2. get the total of each product by doing ... prce * quantity
-
-    // 3. add all the total of each up 
-
-    // 4 return ^ value
-
-
-
+    let finalPrice;
     let individualProductsTotal = products.map(function (product) {
         return (product.price * product.quantity);
     })
     function determineFinalTotal(total, num) {
-        let finalPrice = total + num
-        return console.log(finalPrice)
-    }
-    if (individualProductsTotal.length > 0) {
-         individualProductsTotal.reduce(determineFinalTotal)
+        finalPrice = total + num
+        return finalPrice
     }
 
+    if (individualProductsTotal.length > 0) {
+        individualProductsTotal.reduce(determineFinalTotal)
+    }
+    console.log(finalPrice)
+    return finalPrice
 }
 
-
-
 let cartReducer = (state = defaultState, action) => {
-
-
-
     switch (action.type) {
 
         case "ADD_ITEM":
@@ -94,7 +80,6 @@ let cartReducer = (state = defaultState, action) => {
                     totalPrice: calculateTotal(state.cart)
                 }
             } else {
-
                 return {
                     ...state,
                     message: "Item added to cart",
@@ -125,7 +110,8 @@ let cartReducer = (state = defaultState, action) => {
                 ...state,
                 quantity: action.item.quantity++,
                 totalQuantity: state.totalQuantity + 1,
-                itemPrice: action.item.price * action.item.quantity
+                itemPrice: action.item.price * action.item.quantity,
+                totalPrice: calculateTotal(state.cart)
             };
         case "UPDATE_TOTAL_PRICE":
             return {
@@ -136,54 +122,3 @@ let cartReducer = (state = defaultState, action) => {
     }
 }
 export default cartReducer;
-
-
-// totalQuantity
-// individualQuantity = action.item.quantity (current quantity before decrement)
-// itemPrice 
-// individualItemPrice = action.item.price
-
-// totalItemPriceOfAProduct = individualQuantity * individualItemPrice
-
-// totalItemPriceOfAProduct - idenvidualItemPrice 
-
-
-
-
-// 2 cool shades $20 each
-
-// 3 bracelet $2 each
-
-
-// result of doing totalItemPriceOfAProduct - individualItemPrice
-// 1. push + on brancelet 
-// 2. quantity of bracelet = 4
-// 3. cart.itemPrice = $8 bracelets 
-// 4. push - on coolShades  /// coolshades total price should be $40 so whne you push - it should be $20
-// 5. cart.itemprice 
-//         $8 - $20 /// -$12
-
-// totalItemPriceOfAProduct = 
-
-// 4. push - on coolShades 
-//                         2 * 20 = $40
-
-
-
-// Cart Object
-// TotalPriceOfIndividualItem (Only current product object) 
-// TotalQuantityOfAllproducts
-// each product quantity ??? 
-// cart array = [Product]
-
-
-
-
-// Equation to find out the Total Price of all items
-
-// individualPriceOfProduct
-// QuantityOfIndividualproduct
-// AllTheProducts
-
-// TotalPriceOfAllItem = ForEach item (individualPriceOfProduct * QuantityOfIndividualproduct) add them all up.
-//                         [Product]       product.price               product.quantity ? 

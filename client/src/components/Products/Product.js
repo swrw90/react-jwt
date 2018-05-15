@@ -6,7 +6,6 @@ import { add } from '../../redux/reducers/cart.reducer';
 import { connect } from 'react-redux';
 const rootUrl = 'http://localhost:5000/';
 
-
 // This class represents a product on Products page.
 // Prop: Product object is passed in from Products.jsx file.
 // Product object:
@@ -24,7 +23,6 @@ class Product extends React.Component {
 
     render() {
         return (
-
             <div>
                 <Col xs={6} md={4}>
                     <Thumbnail src={rootUrl + this.props.product.productImage} alt="242x200" className="product-image" >
@@ -50,6 +48,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-
 export default connect(null, mapDispatchToProps)(Product);
-
