@@ -15,7 +15,6 @@ class CheckoutForm extends React.Component {
     }
 
     displayTotal(total) {
-        console.log(this.props.cart.totalPrice)
         let grandTotal = this.props.cart.totalPrice
         return grandTotal
     }
@@ -32,8 +31,8 @@ class CheckoutForm extends React.Component {
                                 <ul className="summary-list">
                                     {this.displayAllCheckoutItems()}
                                 </ul>
-
                             </div>
+                            <Button bsSize="xs" href="/review">Checkout</Button>
                         </div>
                     </Form>
                 </Col>

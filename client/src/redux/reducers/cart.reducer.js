@@ -51,18 +51,25 @@ export function updateTotal(item) {
 }
 
 export function calculateTotal(products) {
+    //1. array of cart products passed in
     let finalPrice;
+
+    //2. new array of total price for each individual product
     let individualProductsTotal = products.map(function (product) {
         return (product.price * product.quantity);
     })
+
+    //4. called by reduce, returns the total of all items price
     function determineFinalTotal(total, num) {
         finalPrice = total + num
         return finalPrice
     }
 
+    //3. conditional to confirm array isn't empty before reduce 
     if (individualProductsTotal.length > 0) {
         individualProductsTotal.reduce(determineFinalTotal)
     }
+    //5. final total price of all items is returned to totalPrice prop on state
     console.log(finalPrice)
     return finalPrice
 }

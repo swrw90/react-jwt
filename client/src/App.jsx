@@ -9,7 +9,8 @@ import Home from './components/Home';
 import About from './components/About/About';
 import Products from './components/Products/Products';
 import Login from './Login/Login';
-import Cart from './components/Cart/Cart.jsx'
+import Cart from './components/Cart/Cart';
+import ReviewPurchase from './components/ReviewPurchase/ReviewPurchase';
 
 
 class App extends Component {
@@ -23,6 +24,8 @@ class App extends Component {
           <Route path='/products' component={Products} />
           <Route path='/login' component={Login} />
           <Route path='/cart' component={Cart} />
+          <Route path='/review' component={ReviewPurchase} />
+
         </div>
       </Router>
     );
