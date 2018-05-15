@@ -6,11 +6,11 @@ import './cart.css';
 
 class CheckoutForm extends React.Component {
 
-    displayAllCartItemsName() {
+    displayAllCheckoutItems() {
         console.log(this.props.cart.itemPrice)
         let cart = this.props.cart.cart;
         var checkoutCartItems = cart.map(function (cart) {
-            return <li key={cart._id}>x{cart.quantity} {cart.name} ${cart.price} </li>
+            return <li key={cart._id}>Qty: {cart.quantity} {cart.name} ${cart.price} </li>
         });
         return checkoutCartItems;
     }
@@ -30,9 +30,10 @@ class CheckoutForm extends React.Component {
                     <Form >
                         <div className="form-container">
                             <h3 className="summary-header">Summary</h3>
+                            <p>total: 000</p>
                             <div>
                                 <ul className="summary-list">
-                                    {this.displayAllCartItemsName()}
+                                    {this.displayAllCheckoutItems()}
                                 </ul>
 
                             </div>
