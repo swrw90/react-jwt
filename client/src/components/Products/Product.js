@@ -14,14 +14,13 @@ const rootUrl = 'http://localhost:5000/';
 //   - description
 //   - imageURL
 class Product extends React.Component {
-
     handleClick = (e) => {
         e.preventDefault(e);
         this.props.addToCart(this.props.product);
-        console.log(this.props.product)
+        this.itemAddedAlert(this.props.product)
     }
-
     render() {
+
         return (
             <div>
                 <Col xs={6} md={4}>
