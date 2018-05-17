@@ -4,8 +4,8 @@ import './index.css';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navbar from './components/CustomNavbar';
-import Home from './components/Home';
+import Navbar from './components/CustomNavbar/CustomNavbar';
+import Home from './components/Home/Home';
 import About from './components/About/About';
 import Products from './components/Products/Products';
 import Login from './Login/Login';

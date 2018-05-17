@@ -17,7 +17,6 @@ class Product extends React.Component {
     handleClick = (e) => {
         e.preventDefault(e);
         this.props.addToCart(this.props.product);
-        this.itemAddedAlert(this.props.product)
     }
     render() {
 
