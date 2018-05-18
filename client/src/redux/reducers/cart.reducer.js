@@ -2,7 +2,8 @@ let defaultState = {
     cart: [],
     totalQuantity: 0,
     itemPrice: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    checkoutClicked: false
 };
 
 export function add(cartItem) {
@@ -46,6 +47,14 @@ export function updateTotal(item) {
         dispatch({
             type: "UPDATE_TOTAL_PRICE",
             item
+        })
+    }
+}
+
+export function checkout() {
+    return dispatch => {
+        dispatch({
+            type: "CHECKOUT_CLICKED"
         })
     }
 }
@@ -120,9 +129,10 @@ let cartReducer = (state = defaultState, action) => {
                 itemPrice: action.item.price * action.item.quantity,
                 totalPrice: calculateTotal(state.cart)
             };
-        case "UPDATE_TOTAL_PRICE":
+        case "CHECKOUT_CLICKED":
             return {
-                ...state
+                ...state,
+                checkoutClicked: true
             }
         default:
             return state;
