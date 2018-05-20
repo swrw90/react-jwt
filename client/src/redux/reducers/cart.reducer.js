@@ -60,27 +60,15 @@ export function checkout() {
 }
 
 export function calculateTotal(products) {
-    //1. array of cart products passed in
-    let finalPrice;
-
-    //2. new array of total price for each individual product
-    let individualProductsTotal = products.map(function (product) {
-        return (product.price * product.quantity);
-    })
-
-    //4. called by reduce, returns the total of all items price
-    function determineFinalTotal(total, num) {
-        finalPrice = total + num
-        return finalPrice
+    function determineFinalTotal(accumulator, currentValue) {
+        return accumulator + currentValue;
     }
 
-    //3. conditional to confirm array isn't empty before reduce 
-    if (individualProductsTotal.length > 0) {
-        individualProductsTotal.reduce(determineFinalTotal)
+    function calculateIndvidualTotalPrice(product) {
+        return product.price * product.quantity;
     }
-    //5. final total price of all items is returned to totalPrice prop on state
-    console.log(finalPrice)
-    return finalPrice
+
+    return products.map(calculateIndvidualTotalPrice).reduce(determineFinalTotal);
 }
 
 let cartReducer = (state = defaultState, action) => {
@@ -103,7 +91,7 @@ let cartReducer = (state = defaultState, action) => {
                     quantity: action.cartItem.quantity++,
                     totalQuantity: state.totalQuantity + 1,
                     itemPrice: action.cartItem.price,
-                    totalPrice: calculateTotal(state.cart)
+                    totalPrice: calculateTotal([...state.cart, action.cartItem])
                 }
             };
         case "REMOVE_ITEM":
@@ -130,9 +118,16 @@ let cartReducer = (state = defaultState, action) => {
                 totalPrice: calculateTotal(state.cart)
             };
         case "CHECKOUT_CLICKED":
-            return {
-                ...state,
-                checkoutClicked: true
+            if (state.checkoutClicked === false) {
+                return {
+                    ...state,
+                    checkoutClicked: true
+                }
+            } else {
+                return {
+                    ...state,
+                    checkoutClicked: false
+                }
             }
         default:
             return state;

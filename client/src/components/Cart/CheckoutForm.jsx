@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartItem from './CartItem';
-import ReviewPurchase from '../ReviewPurchase/ReviewPurchase';
 import { Grid, Row, Col, Button, Form } from 'react-bootstrap';
 import './cart.css';
 import { checkout } from '../../redux/reducers/cart.reducer';
+import ReviewPurchase from '../ReviewPurchase/ReviewPurchase';
+
 
 class CheckoutForm extends React.Component {
 
+    handleCheckoutClick = (e) => {
+        e.preventDefault(e);
+        this.props.updateCheckoutStatus();
+    }
     displayAllCheckoutItems() {
         let cart = this.props.cart.cart;
         var checkoutCartItems = cart.map(function (cart) {
@@ -21,11 +26,7 @@ class CheckoutForm extends React.Component {
         return grandTotal
     }
 
-    handleCheckoutClick = (e) => {
-        e.preventDefault(e);
-        console.log("review called")
-        this.props.checkoutClicked;
-    }
+
     render() {
         return (
             <div>
@@ -43,7 +44,8 @@ class CheckoutForm extends React.Component {
                         </div>
                     </Form>
                 </Col>
-                {this.checkoutClicked === true && <ReviewPurchase/>}
+                {this.props.cart.checkoutClicked === true && <ReviewPurchase id="reviewPurchaseModal" />}
+
             </div>
         )
     }
@@ -59,8 +61,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        checkoutClicked: () => dispatch(checkout())
+        updateCheckoutStatus: () => dispatch(checkout())
     };
 }
 
-export default connect(mapStateToProps)(CheckoutForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutForm);
