@@ -1,7 +1,6 @@
 let defaultState = {
     cart: [],
     totalQuantity: 0,
-    itemPrice: 0,
     totalPrice: 0,
 };
 
@@ -58,26 +57,23 @@ let cartReducer = (state = defaultState, action) => {
 
         case "ADD_ITEM":
             if (action.cartItem.quantity > 0) {
+                action.cartItem.quantity++; // move to product
                 return {
                     ...state,
-                    quantity: action.cartItem.quantity++,
                     totalQuantity: state.totalQuantity + 1,
-                    itemPrice: action.cartItem.price + action.cartItem.price,
                     totalPrice: calculateTotal(state.cart)
                 }
             } else {
+                action.cartItem.quantity++; // move to product
                 return {
                     ...state,
-                    message: "Item added to cart",
                     cart: [...state.cart, action.cartItem],
-                    quantity: action.cartItem.quantity++,
                     totalQuantity: state.totalQuantity + 1,
-                    itemPrice: action.cartItem.price,
                     totalPrice: calculateTotal([...state.cart, action.cartItem])
                 }
             };
         case "REMOVE_ITEM":
-            let filterCondition = element => element._id != action.item._id;
+            let filterCondition = element => element._id != action.item._id; // pull out
             return {
                 ...state,
                 cart: state.cart.filter(filterCondition),
@@ -85,19 +81,17 @@ let cartReducer = (state = defaultState, action) => {
                 totalPrice: calculateTotal(state.cart.filter(filterCondition))
             };
         case "DECREMENT_QUANTITY":
+            action.item.quantity-- // move to product reducer
             return {
                 ...state,
-                quantity: action.item.quantity--,
                 totalQuantity: state.totalQuantity - 1,
-                itemPrice: action.item.quantity * action.item.price,
                 totalPrice: calculateTotal(state.cart)
             };
         case "INCREMENT_QUANTITY":
+            action.item.quantity++;
             return {
                 ...state,
-                quantity: action.item.quantity++,
                 totalQuantity: state.totalQuantity + 1,
-                itemPrice: action.item.price * action.item.quantity,
                 totalPrice: calculateTotal(state.cart)
             };
         default:
