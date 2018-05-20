@@ -11,12 +11,12 @@ class CheckoutForm extends React.Component {
 
     handleCheckoutClick = (e) => {
         e.preventDefault(e);
-        this.props.updateCheckoutStatus();
+       alert("Congratulations on your purchase")
     }
     displayAllCheckoutItems() {
         let cart = this.props.cart.cart;
-        var checkoutCartItems = cart.map(function (cart) {
-            return <li key={cart._id}>Qty: {cart.quantity} {cart.name} @ ${cart.price} </li>
+        var checkoutCartItems = cart.map(function (product) {
+            return <li key={product._id}>Qty: {product.quantity} {product.name} @ ${product.price} </li>
         });
         return checkoutCartItems;
     }
@@ -25,7 +25,6 @@ class CheckoutForm extends React.Component {
         let grandTotal = this.props.cart.totalPrice
         return grandTotal
     }
-
 
     render() {
         return (
@@ -44,8 +43,6 @@ class CheckoutForm extends React.Component {
                         </div>
                     </Form>
                 </Col>
-                {this.props.cart.checkoutClicked === true && <ReviewPurchase id="reviewPurchaseModal" />}
-
             </div>
         )
     }
@@ -55,14 +52,8 @@ const mapStateToProps = (state) => {
     return {
         cart: state.cart,
         totalPrice: state.totalPrice,
-        checkoutClicked: state.checkoutClicked
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        updateCheckoutStatus: () => dispatch(checkout())
-    };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutForm);
+export default connect(mapStateToProps)(CheckoutForm);
