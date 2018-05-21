@@ -18,6 +18,11 @@ let defaultState = {
 
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
+        case "ADD_ITEM":
+            action.cartItem.quantity++;
+            return {
+                ...state,
+            }
         case "PRODUCTS_LOADING":
             console.log("loading");
             return {
