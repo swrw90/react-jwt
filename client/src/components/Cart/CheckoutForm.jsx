@@ -21,11 +21,6 @@ class CheckoutForm extends React.Component {
         return checkoutCartItems;
     }
 
-    displayTotal(total) {
-        let grandTotal = this.props.cart.totalPrice
-        return grandTotal
-    }
-
     render() {
         return (
             <div>
@@ -33,7 +28,7 @@ class CheckoutForm extends React.Component {
                     <Form >
                         <div className="form-container">
                             <h3 className="summary-header">Summary</h3>
-                            <p>total: {this.displayTotal()}</p>
+                            <p>total: {this.props.cart.totalPrice}</p>
                             <div>
                                 <ul className="summary-list">
                                     {this.displayAllCheckoutItems()}

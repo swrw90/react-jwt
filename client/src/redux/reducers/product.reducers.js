@@ -22,7 +22,12 @@ let productReducer = (state = defaultState, action) => {
             action.cartItem.quantity++;
             return {
                 ...state,
-            }
+            };
+        case "DECREMENT_QUANTITY":
+        action.item.quantity--
+        return {
+            ...state
+        }
         case "PRODUCTS_LOADING":
             console.log("loading");
             return {

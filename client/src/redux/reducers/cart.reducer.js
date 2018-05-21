@@ -40,7 +40,11 @@ export function incrementQuantity(item) {
     }
 }
 
-let filterCondition = (element, action) => element._id != action.item._id;
+let filterCondition = (element, action) => {
+    console.log(element)
+    console.log(action)        
+    element._id != action
+};
 
 export function calculateTotal(products) {
     function determineFinalTotal(accumulator, currentValue) {
@@ -67,12 +71,11 @@ let cartReducer = (state = defaultState, action) => {
         case "REMOVE_ITEM":
             return {
                 ...state,
-                cart: state.cart.filter(filterCondition),
+                cart: state.cart.filter(filterCondition(state.cart)),
                 totalQuantity: state.totalQuantity - action.item.quantity,
-                totalPrice: calculateTotal(state.cart.filter(filterCondition(action)))
+                totalPrice: calculateTotal(state.cart.filter(filterCondition(state.cart, action.item._id)))
             };
         case "DECREMENT_QUANTITY":
-            action.item.quantity-- // move to product reducer
             return {
                 ...state,
                 totalQuantity: state.totalQuantity - 1,
