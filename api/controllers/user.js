@@ -66,7 +66,6 @@ exports.user_login = (req, res, next) => {
                     });
                 }
 
-
                 if (result) {
                     const token = jwt.sign(
                         {

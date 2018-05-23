@@ -14,12 +14,21 @@ let defaultState = {
     }],
     loadingMessage: "",
     loadingState: LoadingState.pending,
-    cart: []
 };
 
 let productReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case "PRODUCTS_LOADING":
+        case "ADD_ITEM":
+            action.cartItem.quantity++;
+            return {
+                ...state
+            };
+        case "DECREMENT_QUANTITY":
+             action.item.quantity--;
+             return {
+                ...state
+            };
+        case "PRODUCTS_LOADINGz":
             console.log("loading");
             return {
                 ...state,

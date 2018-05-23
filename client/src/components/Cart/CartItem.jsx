@@ -51,8 +51,6 @@ class CartItem extends React.Component {
             </div>
         )
     }
-
-
 }
 
 const mapDispatchToProps = dispatch => {
