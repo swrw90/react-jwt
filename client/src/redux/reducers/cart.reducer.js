@@ -40,11 +40,12 @@ export function incrementQuantity(item) {
     }
 }
 
-let filterCondition = (element, action) => {
-    console.log(element)
-    console.log(action)        
-    element._id != action
-};
+
+function filterCondition(productToCompare) {
+    return function (element) {
+        return element._id != productToCompare.item._id
+    }
+}
 
 export function calculateTotal(products) {
     function determineFinalTotal(accumulator, currentValue) {
@@ -55,25 +56,34 @@ export function calculateTotal(products) {
         return product.price * product.quantity;
     }
 
-    return products.map(calculateIndvidualTotalPrice).reduce(determineFinalTotal);
+    return products.map(calculateIndvidualTotalPrice).reduce(determineFinalTotal, 0);
 }
 
 let cartReducer = (state = defaultState, action) => {
     switch (action.type) {
 
         case "ADD_ITEM":
-            return {
-                ...state,
-                totalQuantity: state.totalQuantity + 1,
-                cart: [...state.cart, action.cartItem],
-                totalPrice: calculateTotal([...state.cart, action.cartItem])
+            if (state.cart.includes(action.cartItem)) {
+                return {
+                    ...state,
+                    totalQuantity: state.totalQuantity + 1,
+                    totalPrice: calculateTotal([...state.cart, action.cartItem])
+                }
+            } else {
+                return {
+                    ...state,
+                    cart: [...state.cart, action.cartItem],
+                    totalQuantity: state.totalQuantity + 1,
+                    totalPrice: calculateTotal([...state.cart, action.cartItem])
+                }
             }
         case "REMOVE_ITEM":
+
             return {
                 ...state,
-                cart: state.cart.filter(filterCondition(state.cart)),
+                cart: state.cart.filter(filterCondition(action)),
                 totalQuantity: state.totalQuantity - action.item.quantity,
-                totalPrice: calculateTotal(state.cart.filter(filterCondition(state.cart, action.item._id)))
+                totalPrice: calculateTotal(state.cart.filter(filterCondition(action)))
             };
         case "DECREMENT_QUANTITY":
             return {

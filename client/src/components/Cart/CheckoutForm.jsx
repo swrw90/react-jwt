@@ -4,7 +4,6 @@ import CartItem from './CartItem';
 import { Grid, Row, Col, Button, Form } from 'react-bootstrap';
 import './cart.css';
 import { checkout } from '../../redux/reducers/cart.reducer';
-import ReviewPurchase from '../ReviewPurchase/ReviewPurchase';
 
 
 class CheckoutForm extends React.Component {
